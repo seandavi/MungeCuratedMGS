@@ -1,0 +1,56 @@
+---
+title: "Microbial Signatures Data Munging"
+package: MungeCuratedMGS
+output:
+  BiocStyle::html_document
+abstract: |
+  Just data munging.
+vignette: |
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Installation
+
+```{r}
+BiocManager::install('seandavi/MungeCuragedMGS')
+```
+
+# Data entities
+
+```{r message=FALSE, warning=FALSE}
+library(MungeCuratedMGS)
+```
+
+## Signatures
+
+```{r}
+sig_table = create_signatures_table()
+head(sig_table)
+```
+
+
+
+## Ontologies
+
+### EFO
+
+```{r}
+efo = get_efo()
+head(efo)
+```
+
+### UBERON
+
+```{r}
+uberon = get_uberon()
+head(uberon)
+```
+
+Ontologies can be combined like so:
+
+```{r}
+library(dplyr)
+full_ontologies = dplyr::bind_rows(uberon, efo)
+```
