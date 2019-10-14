@@ -4,10 +4,7 @@
 \alias{google_microbial_sig_sheet}
 \title{return a reference to the google curation sheet}
 \usage{
-google_microbial_sig_sheet(key = .ws_key)
-}
-\arguments{
-\item{key}{the google sheet key like in constants.R}
+google_microbial_sig_sheet()
 }
 \description{
 return a reference to the google curation sheet

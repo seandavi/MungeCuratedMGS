@@ -2,13 +2,17 @@
 #'
 #'
 #'
-#' @importFrom googlesheets gs_key
+#' @importFrom googlesheets gs_key gs_ls
+#' @importFrom dplyr filter pull
+#' @importFrom magrittr %>%
 #'
 #' @note requires login via `gs_gs()` or will prompt for login.
-#' @param key the google sheet key like in constants.R
 #'
 #' @export
-google_microbial_sig_sheet = function(key = .ws_key) {
+google_microbial_sig_sheet = function() {
+  key = data.frame(googlesheets::gs_ls()) %>%
+    filter(sheet_title=='Microbial signatures curation') %>%
+    dplyr::pull(sheet_key)
   googlesheets::gs_key(key)
 }
 
