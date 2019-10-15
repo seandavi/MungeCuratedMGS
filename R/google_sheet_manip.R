@@ -11,7 +11,7 @@
 #' @export
 google_microbial_sig_sheet = function() {
   key = data.frame(googlesheets::gs_ls()) %>%
-    filter(sheet_title=='Microbial signatures curation') %>%
+    dplyr::filter(sheet_title=='Microbial signatures curation') %>%
     dplyr::pull(sheet_key)
   googlesheets::gs_key(key)
 }
