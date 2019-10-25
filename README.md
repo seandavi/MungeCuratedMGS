@@ -4,11 +4,15 @@
 BiocManager::install('seandavi/MungeCuratedMGS')
 ```
 
-# Data entities
-
 ```{r message=FALSE, warning=FALSE}
 library(MungeCuratedMGS)
 ```
+
+# Data entities
+
+
+See [working document](https://docs.google.com/spreadsheets/d/11i0qB4EXyk34qfms48GlDIh977rWqsjS0-G9_gk88BM/edit?usp=sharing) for details of where we are headed.
+
 
 ## Signatures
 
