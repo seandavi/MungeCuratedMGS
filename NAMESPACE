@@ -3,6 +3,8 @@
 export(create_signatures_table)
 export(curation_sheet)
 export(get_efo)
+export(get_synonyms)
+export(get_synonyms_file)
 export(get_taxon_dump_files)
 export(get_taxon_names)
 export(get_uberon)

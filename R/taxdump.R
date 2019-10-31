@@ -53,3 +53,37 @@ get_taxon_names = function(download_dir) {
 }
 
 
+#' download taxonomy synonyms
+#'
+#' @param download_dir do file manipulation here
+#' @param taxon_dump_url url of `synonyms.tsv` file
+#'
+#' @return
+#'   The path to the directory containing the `.tsv` file
+#' 
+#' @export
+get_synonyms_file =  function(
+  download_dir = tempdir(),
+  taxon_dump_url = 'https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/synonyms.tsv'
+) {
+  fname = 'synonyms.tsv'
+  tfile = file.path(download_dir, fname)
+  download.file(taxon_dump_url, destfile = tfile)
+  return(download_dir)
+}
+
+#' get and parse synonyms
+#'
+#' Run after \code{\link{get_synonyms_file}} and supply
+#' the download directory name.
+#'
+#' @param download_dir The directory as prepared by get_synonym_file
+#'
+#' @importFrom readr read_tsv
+#'
+#' @export
+get_synonyms = function(download_dir) {
+    file = file.path(download_dir, 'synonyms.tsv')
+    rows = readr::read_tsv(file = file, col_names = TRUE, quote = '')
+    return(rows[, c("Species", "GTDB species", "Synonym")])
+}
