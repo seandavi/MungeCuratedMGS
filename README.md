@@ -67,3 +67,11 @@ taxon_dir = get_taxon_dump_files()
 taxon_id_names = get_taxon_names(taxon_dir)
 head(taxon_id_names, 10)
 ```
+
+### Synonyms
+
+```{r synonyms}
+synonyms_dir = get_synonyms_file()
+synonyms = get_synonyms(synonyms_dir)
+head(synonyms, 10)
+```
