@@ -15,6 +15,6 @@ get_taxon_file(download_dir, taxon_file = "names")
 Generic parser for weird taxon dmp format
 }
 \details{
-Run after \link{\code{get_taxon_dump_files}} ans supply
+Run after \code{\link{get_taxon_dump_files}} ans supply
 the download directory name.
 }

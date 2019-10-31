@@ -10,6 +10,6 @@ get_taxon_names(download_dir)
 \item{download_dir}{The directory as prepared by get_taxon_dump_files}
 }
 \description{
-Run after \link{\code{get_taxon_dump_files}} ans supply
+Run after \code{\link{get_taxon_dump_files}} and supply
 the download directory name.
 }

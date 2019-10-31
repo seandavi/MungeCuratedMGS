@@ -23,7 +23,7 @@ get_taxon_dump_files = function(
 #'
 #' Generic parser for weird taxon dmp format
 #'
-#' Run after \link{\code{get_taxon_dump_files}} ans supply
+#' Run after \code{\link{get_taxon_dump_files}} ans supply
 #' the download directory name.
 #'
 #' @param download_dir The directory as prepared by get_taxon_dump_files
@@ -40,7 +40,7 @@ get_taxon_file = function(download_dir, taxon_file = 'names') {
 
 #' get and parse the `names.dmp` from taxon dump archive
 #'
-#' Run after \link{\code{get_taxon_dump_files}} ans supply
+#' Run after \code{\link{get_taxon_dump_files}} and supply
 #' the download directory name.
 #'
 #' @param download_dir The directory as prepared by get_taxon_dump_files
