@@ -20,13 +20,12 @@ google_microbial_sig_sheet = function() {
 #'
 #' Also skips first row of "data" since that is just a comment
 #'
-#' @importFrom googlesheets gs_read
+#' @importFrom readr read_csv
 #' @param sheet The spreadsheet reference from \code{\link{google_microbial_sig_sheet}}
 #'
 #' @export
-curation_sheet = function(sheet = google_microbial_sig_sheet()) {
-  tmp = gs_read(sheet, 2, skip = 1)
-  return(tmp[-1,])
+curation_sheet = function() {
+  readr::read_csv(system.file(package="MungeCuratedMGS", 'extdata/curation.csv.gz'), skip=1)
 }
 
 
