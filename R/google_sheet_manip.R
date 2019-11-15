@@ -51,4 +51,5 @@ create_signatures_table = function(sheet = curation_sheet()) {
       `curator`,
       `revision`
     )
+  sheet[-1, ]
 }
