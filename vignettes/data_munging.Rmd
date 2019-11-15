@@ -37,7 +37,7 @@ saveRDS(token, file = "/tmp/googlesheets_token.rds")
 
 ```{r sig_table_from_gs}
 library(googlesheets)
-suppressMessages(gs_auth(verbose = FALSE))
+suppressMessages(gs_auth(token = "/tmp/googlesheets_token.rds", verbose = FALSE))
 sig_table = create_signatures_table()
 head(sig_table)
 ```
