@@ -76,3 +76,11 @@ taxon_dir = get_taxon_dump_files()
 taxon_id_names = get_taxon_names(taxon_dir)
 head(taxon_id_names, 10)
 ```
+
+## Curation Tables
+
+### Study table
+
+```{r}
+create_signatures_table()
+```
