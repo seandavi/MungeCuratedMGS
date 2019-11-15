@@ -4,8 +4,10 @@
 \alias{get_taxon_dump_files}
 \title{download and untar ncbi taxonomy}
 \usage{
-get_taxon_dump_files(download_dir = tempdir(),
-  taxon_dump_url = "ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz")
+get_taxon_dump_files(
+  download_dir = tempdir(),
+  taxon_dump_url = "ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz"
+)
 }
 \arguments{
 \item{download_dir}{do file manipulation here}

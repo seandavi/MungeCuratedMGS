@@ -23,26 +23,36 @@ BiocManager::install('seandavi/MungeCuratedMGS')
 library(MungeCuratedMGS)
 ```
 
-## Signatures
+# Authentication
 
-Before running this vignette
-
+Run only once to authenticate, before running vignette (not evaluated in vignette):
 ```{r eval=FALSE}
 library(googlesheets)
 token = gs_auth()
 saveRDS(token, file = "/tmp/googlesheets_token.rds")
 ```
 
-
-
-```{r sig_table_from_gs}
+Then run with the vignette, each time:
+```{r}
 library(googlesheets)
 suppressMessages(gs_auth(token = "/tmp/googlesheets_token.rds", verbose = FALSE))
+```
+
+## Signature metadata
+
+```{r sig_table_from_gs}
 sig_table = create_signaturemetadata_table()
 head(sig_table)
 ```
 
+## Citation entity
 
+[Issue #6](https://github.com/seandavi/MungeCuratedMGS/issues/6)
+
+```{r citation_table}
+citation_table = create_citation_table()
+head(citation_table)
+```
 
 ## Ontologies
 

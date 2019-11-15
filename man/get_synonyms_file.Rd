@@ -4,8 +4,11 @@
 \alias{get_synonyms_file}
 \title{download taxonomy synonyms}
 \usage{
-get_synonyms_file(download_dir = tempdir(),
-  taxon_dump_url = "https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/synonyms.tsv")
+get_synonyms_file(
+  download_dir = tempdir(),
+ 
+    taxon_dump_url = "https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/synonyms.tsv"
+)
 }
 \arguments{
 \item{download_dir}{do file manipulation here}
