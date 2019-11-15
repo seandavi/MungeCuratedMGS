@@ -29,27 +29,3 @@ curation_sheet = function() {
 }
 
 
-#' create signatures table
-#'
-#' This will be the `signature` data model
-#'
-#' @importFrom dplyr select
-#' @importFrom magrittr %>%
-#' @param curation_sheet a data.frame, the curation worksheet from google sheet (sheet 2 as of now)
-#'
-#' @export
-create_signatures_table = function(sheet = curation_sheet()) {
-  sheet %>%
-    dplyr::select(
-      PMID,
-      `source within paper`,
-      `Free-form description`,
-      `contrast (list control group last)`,
-      `body_site`,
-      `condition`,
-      `date of curation`,
-      `curator`,
-      `revision`
-    )
-  sheet[-1, ]
-}
