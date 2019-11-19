@@ -10,8 +10,6 @@
 create_citation_table = function(sheet = curation_sheet()) {
   output <- sheet %>%
     dplyr::select(PMID) %>%
-    dplyr::slice(-1) %>% #first row is comments
-    dplyr::filter(!is.na(PMID)) %>%
     unique()
   # fill in NAs for missing optional columns?
   output$DOI <- rep(NA, nrow(output))

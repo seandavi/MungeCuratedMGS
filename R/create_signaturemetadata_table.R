@@ -14,11 +14,10 @@ create_signaturemetadata_table = function(sheet = curation_sheet()) {
       `source within paper`,
       `Free-form description`,
       `contrast (list control group last)`,
-      `body_site`,
-      `condition`,
+      body_site,
+      condition,
       `date of curation`,
-      `curator`,
-      `revision`
+      curator,
+      revision
     )
-  sheet[-1, ]
 }

@@ -6,5 +6,5 @@ study design,text from vocabulary,FALSE,factor,
 matched on,text,FALSE,character,probably will drop this
 confounders controlled for,text,FALSE,character,
 antibiotics exclusion,text,FALSE,character,
-location,"link to location, array",TRUE,character,"how to encode location? study may be performed in one country, but samples from another or more than one."
-citation,link to citation,FALSE,character,
+Country,"link to location, array",TRUE,character,"how to encode location? study may be performed in one country, but samples from another or more than one."
+PMID,link to citation,FALSE,character,
