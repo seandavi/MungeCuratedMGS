@@ -33,7 +33,7 @@ saveRDS(token, file = "/tmp/googlesheets_token.rds")
 ```
 
 Then run with the vignette, each time:
-```{r}
+```{r eval=FALSE}
 library(googlesheets)
 suppressMessages(gs_auth(token = "/tmp/googlesheets_token.rds", verbose = FALSE))
 ```
@@ -92,5 +92,5 @@ head(taxon_id_names, 10)
 ### Study table
 
 ```{r}
-create_signatures_table()
+create_study_table()
 ```
