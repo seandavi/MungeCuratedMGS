@@ -22,10 +22,14 @@ google_microbial_sig_sheet = function() {
 #'
 #' @importFrom readr read_csv
 #' @param sheet The spreadsheet reference from \code{\link{google_microbial_sig_sheet}}
+#' @param additional arguments passed on to readr::read_csv
 #'
 #' @export
-curation_sheet = function() {
-  readr::read_csv(system.file(package="MungeCuratedMGS", 'extdata/curation.csv.gz'), skip=1)
+curation_sheet = function(...) {
+    cfile <- system.file('extdata/curation.csv.gz', package = "MungeCuratedMGS")
+    sheet <- readr::read_csv(cfile, skip=1, ...)
+    sheet <- sheet[-1,]
+    sheet[!is.na(sheet$PMID),]
 }
 
 

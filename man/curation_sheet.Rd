@@ -4,10 +4,12 @@
 \alias{curation_sheet}
 \title{return the curation worksheet (sheet #2)}
 \usage{
-curation_sheet()
+curation_sheet(...)
 }
 \arguments{
 \item{sheet}{The spreadsheet reference from \code{\link{google_microbial_sig_sheet}}}
+
+\item{additional}{arguments passed on to readr::read_csv}
 }
 \description{
 Also skips first row of "data" since that is just a comment

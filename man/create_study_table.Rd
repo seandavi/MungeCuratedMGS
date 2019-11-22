@@ -4,7 +4,7 @@
 \alias{create_study_table}
 \title{create study table}
 \usage{
-create_study_table()
+create_study_table(sheet = curation_sheet())
 }
 \arguments{
 \item{sheet}{a data.frame, the curation worksheet from google sheet
