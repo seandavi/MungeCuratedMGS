@@ -3,6 +3,7 @@
 export(create_citation_table)
 export(create_contrast_table)
 export(create_signaturemetadata_table)
+export(create_statistical_test_table)
 export(create_study_table)
 export(curation_sheet)
 export(get_efo)

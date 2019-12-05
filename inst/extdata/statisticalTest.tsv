@@ -1,0 +1,21 @@
+statistical test	citation	description
+ANCOM	https://doi.org/10.3402/mehd.v26.27663	ANOVA of compositional log-ratios
+ANOSIM	 https://doi.org/10.1111/j.1442-9993.1993.tb00438.x	Analysis of similarities (ANOSIM) tests whether there is a significant difference between two or more groups of sampling units
+ANOVA	https://doi.org/10.1016/0169-7439(89)80095-4	Analysis of variance for detection of differences among group means in a sample
+chi-square	https://doi.org/10.1080/14786440009463897	The chi-squared test is used to determine whether there is a significant difference between the expected frequencies and the observed frequencies in one or more categories
+DESeq2	https://doi.org/10.1186/s13059-014-0550-8	Estimate variance-mean dependence in count data from high-throughput sequencing assays and test for differential expression based on a model using the negative binomial distribution.
+edgeR	https://doi.org/10.1093/bioinformatics/btp616	Differential signal analysis of high-throughput count data based on the negative binomial distribution, including empirical Bayes estimation, generalized linear models and quasi-likelihood tests
+Fisher's Exact Test	http://www.biostathandbook.com/fishers.html	Fisher's exact test is used to determine if there are non-random associations between two categorical variables
+Kolmogorov-Smirnov test	https://doi.org/10.1080/01621459.1951.10500769	Nonparametric test to compare the empirical distribution functions of two samples
+Kruskall-Wallis	http://www.biostathandbook.com/kruskalwallis.html	The Kruskal–Wallis test by ranks, Kruskal–Wallis H test (named after William Kruskal and W. Allen Wallis), or one-way ANOVA on ranks is a non-parametric method for testing whether samples originate from the same distribution. It is used for comparing two or more independent samples of equal or different sample sizes.
+LEfSe	https://doi.org/10.1186/gb-2011-12-6-r60	Linear discriminant analysis effect size, differential abundance testing between 2 or more sample groups 
+Linear Regression	http://www.biostathandbook.com/linearregression.html	General analysis technique for assessing a linear relationship between two quantitative variables
+Logistic Regression	https://doi.org/10.1186/cc3045	Logistic regression is the appropriate regression analysis to conduct when the dependent variable is dichotomous (binary)
+Mann-Whitney (Wilcoxon)	https://doi.org/10.1136/bmj.323.7309.391	Non-parametric alternative to the t-test when the data is severly non-normally distributed. Used to investigate whether two independent samples were selected from populations having the same distribution.
+Pearson correlation	http://www.biostathandbook.com/linearregression.html	General analysis technique for assessing a linear relationship between two quantitative variables
+PLS-DA (Partial least square discriminant analysis) 	 https://doi.org/10.1002/cem.2609	Partial least squares regression for a categorical response matrix
+Random Forest Analysis	https://doi.org/10.1023/A:1010933404324	Random forests or random decision forests are an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes (classification) or mean prediction (regression) of the individual trees
+Spearman correlation	http://www.biostathandbook.com/spearman.html	Rank-based assessing of a linear relationship between two quantitative variables
+t-test	http://www.biostathandbook.com/twosamplettest.html	Student's two-sample location test of the null hypothesis that the means of two samples are equal
+Welch's t-test	http://www.biostathandbook.com/twosamplettest.html	Modification of Student's t-test for the case of unequal variances between groups
+Metastats	 https://doi.org/10.1371/journal.pcbi.1000352	Metastats uses a non-parametric t-test for differential abundance testing between two sample groups
