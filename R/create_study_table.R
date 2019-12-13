@@ -24,7 +24,7 @@ create_study_table <- function(sheet = curation_sheet())
     colnames(stbl) <- tolower(rel.cols)
 
     # keys
-    prim.key <- paste0("STUD", seq_len(nrow(stbl)))
+    prim.key <- create_keys("STUD", nrow(stbl))
     
     loc.tab <- create_location_table()
     ind <- match(stbl[,"country"], loc.tab$country)

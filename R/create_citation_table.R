@@ -15,7 +15,7 @@ create_citation_table = function(sheet = curation_sheet()) {
   output$DOI <- rep(NA, nrow(output))
   output$BibTex <- rep(NA, nrow(output))
   output$URI <- rep(NA, nrow(output))
-  output$primary_key <- paste0("CIT", seq_len(nrow(output)))
+  output$primary_key <- create_keys("CIT", nrow(output))
   output[,c(ncol(output), 1:(ncol(output) - 1))]
 }
    

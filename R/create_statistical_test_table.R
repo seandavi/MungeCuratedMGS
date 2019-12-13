@@ -6,5 +6,7 @@
 create_statistical_test_table <- function()
 {
     sfile <- system.file('extdata/statisticalTest.tsv', package = "MungeCuratedMGS")
-    readr::read_tsv(sfile)
+    stbl <- readr::read_tsv(sfile)
+    stbl$primary_key <- create_keys("STAT", nrow(stbl))
+    stbl[,c(ncol(stbl), 1:(ncol(stbl) - 1))]
 }

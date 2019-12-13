@@ -11,6 +11,6 @@ create_location_table <- function()
     sheet <- readr::read_csv(vfile)
     sheet <- sheet[,2]
     colnames(sheet) <- "country"
-    tibble(primary_key = paste0("LOC", seq_len(nrow(sheet))), 
+    tibble(primary_key = create_keys("LOC", nrow(sheet)), 
            country = sheet$country)
 }
