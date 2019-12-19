@@ -1,30 +1,22 @@
-#' create signature metadata table
+#' create signature table
 #'
-#' This will be the `signature metadata` data model
+#' This will be the `signature` data model
 #'
-#' @importFrom dplyr select
-#' @importFrom magrittr %>%
 #' @param curation_sheet a data.frame, the curation worksheet from google sheet (sheet 2 as of now)
 #'
+#' @importFrom reshape2 melt 
 #' @export
 create_signature_table = function(sheet = curation_sheet()) {
-  sheet <- sheet %>%
-    dplyr::select(
-      Pielou,
-      `Shannon index`,
-      Chao1,
-      Simpson,
-      `Inverse Simpson`,
-      `richness (Specie's Diversity)`,
-    )
 
-    dplyr::tibble(  primary_key = create_keys("SIG", nrow(sheet)),
-                    metadata = create_keys("SIGMET", nrow(sheet)),
-                    contrast = create_keys("CON", nrow(sheet)),
-                    body_site = sheet[["body_site"]],
-                    condition = sheet[["condition"]],
-                    date = sheet[["date of curation"]],
-                    curator = sheet[["curator"]],
-                    revision = sheet[["revision"]])
+    ind <- grep("^taxon.1$", colnames(sheet))
+    ind <- ind:ncol(sheet)
+    msc <- apply(as.matrix(sheet[,ind]), 1, function(x) x[!is.na(x) & x != ""])
+    names(msc) <- create_keys("SIG", nrow(sheet))
+    sig.table <- reshape2::melt(msc)
+    sig.table <- sig.table[,2:1]
+    colnames(sig.table) <- c("SIG.ID", "MetaPhlan")    
     
+    m2n <- metaphlan2ncbi()
+    sig.table$NCBI <- unname(m2n[as.vector(sig.table$MetaPhlan)])
+    dplyr::as_tibble(sig.table)
 }
