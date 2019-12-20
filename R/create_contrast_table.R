@@ -27,7 +27,11 @@ create_contrast_table <- function(sheet = curation_sheet())
     mht <- sheet[["threshold corrected for MHT? yes/no"]] == "yes"  
     increased <- sheet[["UP or DOWN"]] == "UP"
 
-    ctbl <- data.frame(sheet[["statistical test"]],
+    stest.tab <- create_statistical_test_table()
+    ind <- match(sheet[["statistical test"]], stest.tab[["statistical test"]]) 
+
+    ctbl <- data.frame( create_keys("CON", nrow(sheet)),    
+                        stest.tab[ind, "primary_key"],
                         sig.thresh,
                         mht,
                         as.integer(sheet[["control (unexposed) sample size"]]),
@@ -36,7 +40,8 @@ create_contrast_table <- function(sheet = curation_sheet())
                         contrast$cases,
                         increased)
 
-    colnames(ctbl) <- c("statistical test", 
+    colnames(ctbl) <- c("primary_key",
+                        "statistical test", 
                         "significance threshold", 
                         "MHT correction",
                         "Group 0 sample size",
@@ -44,8 +49,8 @@ create_contrast_table <- function(sheet = curation_sheet())
                         "Group 0 definition",
                         "Group 1 definition",
                         "Increased abundance in Group 1")
-    
-    as_tibble(ctbl)       
+
+    dplyr::as_tibble(ctbl)       
 }
 
 .cleanSigThresh <- function(scol)

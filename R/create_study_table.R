@@ -9,7 +9,7 @@
 #' @export
 create_study_table <- function(sheet = curation_sheet())
 { 
-    pmids <- unique(sheet[,"PMID"])    
+    # content
     rel.cols <- c("sequencing type",
                     "16S variable region",
                     "sequencing platform",
@@ -21,9 +21,25 @@ create_study_table <- function(sheet = curation_sheet())
                     # , `location`, `citation`
     feats <- lapply(rel.cols, .studyFeature, sheet = sheet)
     stbl <- do.call(cbind, feats)                  
-    stbl <- cbind(pmids, stbl) 
-    colnames(stbl) <- c("PMID", rel.cols)
-    for(i in 6:9) stbl[[i]] <- as.character(stbl[[i]])
+    colnames(stbl) <- tolower(rel.cols)
+
+    # keys
+    prim.key <- create_keys("STUD", nrow(stbl))
+    
+    loc.tab <- create_location_table()
+    ind <- match(stbl[,"country"], loc.tab$country)
+    loc.key <- loc.tab[ind, "primary_key"]
+    colnames(loc.key) <- "location"
+    
+    pmids <- unique(sheet$PMID)    
+    cit.tab <- create_citation_table(sheet)
+    ind <- match(pmids, cit.tab$PMID)
+    cit.key <- cit.tab[ind, "primary_key"]
+    colnames(cit.key) <- "citation"
+
+    stbl <- stbl[,-ncol(stbl)] 
+    stbl <- cbind(primary_key = prim.key, stbl, loc.key, cit.key)
+    for(i in c(1,6:10)) stbl[,i] <- as.character(stbl[,i]) 
     as_tibble(stbl)
 }
 
