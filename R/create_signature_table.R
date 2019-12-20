@@ -18,5 +18,5 @@ create_signature_table = function(sheet = curation_sheet()) {
     
     m2n <- metaphlan2ncbi()
     sig.table$NCBI <- unname(m2n[as.vector(sig.table$MetaPhlan)])
-    dplyr::as_tibble(sig.table)
+    as_tibble(sig.table)
 }

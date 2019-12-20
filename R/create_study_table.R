@@ -5,7 +5,7 @@
 #' @param sheet a data.frame, the curation worksheet from google sheet
 #'     (sheet 2 as of now)
 #'
-#' @importFrom dplyr as_tibble
+#' @importFrom tibble as_tibble
 #' @export
 create_study_table <- function(sheet = curation_sheet())
 { 

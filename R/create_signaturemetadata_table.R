@@ -9,7 +9,7 @@
 #' @export
 create_signaturemetadata_table = function(sheet = curation_sheet()) {
   sheet <- sheet %>%
-    dplyr::select(
+    select(
       PMID,
       `source within paper`,
       `Free-form description`,
@@ -31,7 +31,7 @@ create_signaturemetadata_table = function(sheet = curation_sheet()) {
 
     con.tab <- create_contrast_table()
     
-    dplyr::tibble(  primary_key = create_keys("SIGMET", nrow(sheet)),
+    tibble(  primary_key = create_keys("SIGMET", nrow(sheet)),
                     study = stud[["primary_key"]],
                     source = sheet[["source within paper"]],
                     description = sheet[["Free-form description"]], 

@@ -2,14 +2,14 @@
 #'
 #' This will be the alpha diversity data model
 #'
-#' @importFrom dplyr select tibble
+#' @importFrom dplyr select
 #' @importFrom magrittr %>%
 #' @param curation_sheet a data.frame, the curation worksheet from google sheet (sheet 2 as of now)
 #'
 #' @export
 create_diversity_table = function(sheet = curation_sheet()) {
   sheet <- sheet %>%
-    dplyr::select(
+    select(
       Pielou,
       `Shannon index`,
       Chao1,
@@ -18,7 +18,7 @@ create_diversity_table = function(sheet = curation_sheet()) {
       `richness (Specie's Diversity)`,
     )
 
-    dplyr::tibble(  primary_key = create_keys("DIV", nrow(sheet)),
+    tibble(  primary_key = create_keys("DIV", nrow(sheet)),
                     signature = create_keys("SIG", nrow(sheet)),
                     metadata = create_keys("SIGMET", nrow(sheet)),
                     Pielou = sheet[["Pielou"]],

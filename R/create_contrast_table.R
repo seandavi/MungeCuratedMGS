@@ -2,6 +2,8 @@
 #'
 #' This will be the `contrast` data model
 #'
+#' @importFrom dplyr select
+#' @importFrom magrittr %>%
 #' @param sheet a data.frame, the curation worksheet from google sheet
 #'     (sheet 2 as of now)
 #'
@@ -50,7 +52,7 @@ create_contrast_table <- function(sheet = curation_sheet())
                         "Group 1 definition",
                         "Increased abundance in Group 1")
 
-    dplyr::as_tibble(ctbl)       
+    as_tibble(ctbl)       
 }
 
 .cleanSigThresh <- function(scol)

@@ -123,7 +123,8 @@ create_citation_table()
 
 ## Write all tables as csv files
 
-```{r}
-write_all_tables()
+```{r, message=FALSE}
+res <- write_all_tables()
+names(res)
 ```
 
