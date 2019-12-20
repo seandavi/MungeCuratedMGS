@@ -1,3 +1,7 @@
+# Data model slides
+
+[Link](https://docs.google.com/presentation/d/1Dxv9-poRRY5Kdl0k0MMtAo6kVfqX2uGkomHcVJ1J9iU/edit?usp=sharing)
+
 # Installation
 
 ```{r eval=FALSE}
