@@ -28,8 +28,9 @@ google_microbial_sig_sheet = function() {
 curation_sheet = function(...) {
     cfile <- system.file('extdata/curation.csv.gz', package = "MungeCuratedMGS")
     sheet <- readr::read_csv(cfile, skip=1, ...)
+    if(ncol(sheet) == 1L){
+      stop("Run `git lfs pull` to get curation sheet, then re-install package")
+    }
     sheet <- sheet[-1,]
     sheet[!is.na(sheet$PMID),]
 }
-
-

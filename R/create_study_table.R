@@ -9,6 +9,8 @@
 #' @export
 create_study_table <- function(sheet = curation_sheet())
 { 
+    sheet$STUDY <- MungeCuratedMGS:::create_keys("STUDY", nrow(sheet))
+    sheet$SIGNATURE <- MungeCuratedMGS:::create_keys("SIGNATURE", nrow(sheet))
     # content
     rel.cols <- c("sequencing type",
                     "16S variable region",
@@ -17,11 +19,13 @@ create_study_table <- function(sheet = curation_sheet())
                     "matched on",
                     "confounders controlled for",
                     "antibiotics exclusion",
-                    "Country")
+                    "Country",
+                  "PMID")
                     # , `location`, `citation`
     feats <- lapply(rel.cols, .studyFeature, sheet = sheet)
     stbl <- do.call(cbind, feats)                  
     colnames(stbl) <- tolower(rel.cols)
+    colnames(stbl) <- sub("country", "location", colnames(stbl))
 
     # keys
     prim.key <- create_keys("STUD", nrow(stbl))
@@ -43,6 +47,7 @@ create_study_table <- function(sheet = curation_sheet())
     as_tibble(stbl)
 }
 
+.studyFeature <- function(feature, sheet)
 .studyFeature <- function(feature, sheet)
 {
     sheet <- as.data.frame(sheet) 
