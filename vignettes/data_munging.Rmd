@@ -128,3 +128,27 @@ res <- write_all_tables()
 names(res)
 ```
 
+```{r}
+    ## create keys
+    study.string <- Reduce(paste, sheet[, study.cols])
+    sheet$STUDY <-
+        paste0("Study ", rank(study.string, ties.method = "min"))
+    sheet$SIGNATURE <- create_keys("Signature ", nrow(sheet))
+    ## create study sheet
+    output <- list()
+    output[["study"]] <- unique(sheet[, c("STUDY", study.cols)])
+    output[["study"]]$DOI <- NA
+    output[["study"]]$BibTex <- NA
+    output[["study"]]$URI <- NA
+    ## create signature sheet
+    output[["signature"]] <-
+        sheet[, !colnames(sheet) %in% colnames(output[["study"]])]
+    output[["signature"]]$STUDY <- sheet$STUDY
+    output[["signature"]] <-
+        output[["signature"]][, !colnames(output[["signature"]]) %in% c("Dropbox", "PubMed")]
+    output[["signature"]] <-
+        output[["signature"]][,!sapply(output[["signature"]], function(x)
+            all(is.na(x)))]
+    return(output)
+```
+
