@@ -23,7 +23,8 @@ create_study_table <- function(sheet = curation_sheet())
     sheet$DOI <- NA
     sheet$BibTex <- NA
     sheet$URI <- NA
-    return(sheet[, c(studyCols(), "DOI", "BibTex", "URI")])
+    sheet <- sheet[, c(studyCols(), "DOI", "BibTex", "URI")]
+    return(sheet)
 }
 
 

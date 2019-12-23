@@ -79,76 +79,17 @@ taxon_id_names = get_taxon_names(taxon_dir)
 head(taxon_id_names, 10)
 ```
 
-## Curation Tables
-
-### Signature metadata
-
-```{r sig_table_from_gs}
-sig_table = create_signaturemetadata_table()
-head(sig_table)
-```
-
-### Signature
+## Write all curation tables as csv files
 
 ```{r}
-create_signature_table()
-```
-
-### Citation
-
-[Issue #6](https://github.com/seandavi/MungeCuratedMGS/issues/6)
-
-```{r citation_table}
-citation_table = create_citation_table()
-head(citation_table)
-```
-
-### Study
-
-```{r}
-create_study_table()
-```
-
-### Contrast
-
-```{r}
-create_contrast_table()
-```
-
-### Citation
-
-```{r}
-create_citation_table()
-```
-
-## Write all tables as csv files
-
-```{r, message=FALSE}
-res <- write_all_tables()
-names(res)
-```
-
-```{r}
-    ## create keys
-    study.string <- Reduce(paste, sheet[, study.cols])
-    sheet$STUDY <-
-        paste0("Study ", rank(study.string, ties.method = "min"))
-    sheet$SIGNATURE <- create_keys("Signature ", nrow(sheet))
-    ## create study sheet
-    output <- list()
-    output[["study"]] <- unique(sheet[, c("STUDY", study.cols)])
-    output[["study"]]$DOI <- NA
-    output[["study"]]$BibTex <- NA
-    output[["study"]]$URI <- NA
-    ## create signature sheet
-    output[["signature"]] <-
-        sheet[, !colnames(sheet) %in% colnames(output[["study"]])]
-    output[["signature"]]$STUDY <- sheet$STUDY
-    output[["signature"]] <-
-        output[["signature"]][, !colnames(output[["signature"]]) %in% c("Dropbox", "PubMed")]
-    output[["signature"]] <-
-        output[["signature"]][,!sapply(output[["signature"]], function(x)
-            all(is.na(x)))]
-    return(output)
+study <- create_study_table()
+signature <- create_signature_table()
+signature[["Study"]] <- create_keys("Study ", study)
+signature[["Page Name"]] <- create_keys("Signature ", signature)
+signature <- unique(signature)
+study[["Page Name"]] <- create_keys("Study ", study)
+study <- unique(study)
+write.csv(study, file="studies.csv", row.names = FALSE)
+write.csv(signature, file="signatures.csv", row.names = FALSE)
 ```
 

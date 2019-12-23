@@ -1,4 +1,19 @@
-create_keys <- function(prefix, n) paste0(prefix, seq_len(n))
+#' create_keys
+#'
+#' @param prefix A prefix
+#' @param x A list or data.frame
+#'
+#' @return A key that is the same for any identical rows 
+#' and different for non-identical rows
+#' @export
+#'
+#' @examples
+#' (df <- data.frame(a=c(1, 1, 5, 6), b=c(1, 1, 5, 9)))
+#' create_keys("key", df)
+create_keys <- function(prefix, x){
+    string <- Reduce(paste, x)
+    paste0(prefix, rank(string, ties.method = "min"))
+}
 
 metaphlan2ncbi <- function(mid)
 {

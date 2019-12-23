@@ -8,22 +8,14 @@
 #' @export
 create_signature_table = function(sheet = curation_sheet()) {
     ## create signature sheet
-    sheet <-
-        sheet[, !colnames(sheet) %in% c("Dropbox", "PubMed")]
-    
+    sheet <- sheet[, !colnames(sheet) %in% c("Dropbox", "PubMed")]
+    sheet <- sheet[, colSums(is.na(sheet)) < nrow(sheet)] ##remove all NA columns
+    m2n <- MungeCuratedMGS:::metaphlan2ncbi()
     ind <- grep("^taxon", colnames(sheet))
     for (i in ind){
-        
+        sheet[[sub("taxon", "NCBI", colnames(sheet)[i])]] <- as.integer(m2n[sheet[[i]]])
     }
-    msc <-
-        apply(as.matrix(sheet[, ind]), 1, function(x)
-            x[!is.na(x) & x != ""])
-    names(msc) <- create_keys("SIG", nrow(sheet))
-    sig.table <- reshape2::melt(msc)
-    sig.table <- sig.table[, 2:1]
-    colnames(sig.table) <- c("SIG.ID", "MetaPhlan")
-    
-    m2n <- metaphlan2ncbi()
-    sig.table$NCBI <- unname(m2n[as.vector(sig.table$MetaPhlan)])
-    as_tibble(sig.table)
+    colnames(sheet) <- sub("^taxon.+", "Metaphlan", colnames(sheet))
+    colnames(sheet) <- sub("^as\\.integer.+", "NCBI", colnames(sheet))
+    return(sheet)
 }
