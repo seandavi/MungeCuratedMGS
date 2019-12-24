@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' (df <- data.frame(a=c(1, 1, 5, 6), b=c(1, 1, 5, 9)))
+#' (df <- data.frame(a=c(9, 9, 5, 6), b=c(9, 9, 5, 9)))
 #' create_keys("key", df)
 create_keys <- function(prefix, x){
     string <- Reduce(paste, x)
