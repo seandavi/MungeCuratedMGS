@@ -113,7 +113,10 @@ write.csv(signature2, file="signatures_alternatingNCBI.csv", row.names = FALSE)
 
 Single PMIDs split into multiple studies
 ```{r}
-splits <- study[duplicated(study$PMID), ]
+pmidsplits <- table(study$PMID)
+pmidsplits <- pmidsplits[pmidsplits > 1]
+pmidsplits <- names(pmidsplits)
+splits <- study[study$PMID %in% pmidsplits, ]
 (splits <- splits[order(splits$PMID), ])
 write.csv(splits, "splitstudies.csv", row.names = FALSE)
 ```
