@@ -50,21 +50,21 @@ suppressMessages(gs_auth(token = "/tmp/googlesheets_token.rds", verbose = FALSE)
 
 ### EFO
 
-```{r efo, cache=TRUE}
+```{r efo, cache=TRUE, eval=FALSE}
 efo = get_efo()
 head(efo)
 ```
 
 ### UBERON
 
-```{r uberon, cache=TRUE}
+```{r uberon, cache=TRUE, eval=FALSE}
 uberon = get_uberon()
 head(uberon)
 ```
 
 Ontologies can be combined like so:
 
-```{r}
+```{r, eval=FALSE}
 library(dplyr)
 full_ontologies = dplyr::bind_rows(uberon, efo)
 ```
@@ -73,7 +73,7 @@ full_ontologies = dplyr::bind_rows(uberon, efo)
 
 ### Names and Taxon IDs
 
-```{r taxon_names, cache=TRUE}
+```{r taxon_names, cache=TRUE, eval=FALSE}
 taxon_dir = get_taxon_dump_files()
 taxon_id_names = get_taxon_names(taxon_dir)
 head(taxon_id_names, 10)
@@ -82,14 +82,32 @@ head(taxon_id_names, 10)
 ## Write all curation tables as csv files
 
 ```{r}
-study <- create_study_table()
-signature <- create_signature_table()
-signature[["Study"]] <- create_keys("Study ", study)
-signature[["Page Name"]] <- create_keys("Signature ", signature)
-signature <- unique(signature)
-study[["Page Name"]] <- create_keys("Study ", study)
+sheet <- curation_sheet()
+dim(sheet)
+```
+
+```{r}
+study <- create_study_table(sheet)
+signature <- create_signature_table(sheet)
+```
+
+Create keys and write to file:
+```{r}
+signature$Study <- create_keys("Study ", study)
+signature$`Page Name` <- sort(create_keys("Signature ", signature))
+study$`Page Name` <- create_keys("Study ", study)
 study <- unique(study)
+study <- study[order(study$`Page Name`), ]
 write.csv(study, file="studies.csv", row.names = FALSE)
 write.csv(signature, file="signatures.csv", row.names = FALSE)
+```
+
+Write the signatures file again, alternating metaphlan and NCBI columns:
+```{r}
+nonsigcols <- grep("Metaphlan|NCBI|Study|Page", colnames(signature), invert=TRUE)
+sigcols <- as.integer(t(cbind(grep("Metaphlan", colnames(signature)), grep("NCBI", colnames(signature)))))
+keys <- grep("Study|Page", colnames(signature))
+signature2 <- signature[, c(nonsigcols, sigcols, keys)]
+write.csv(signature2, file="signatures_alternatingNCBI.csv", row.names = FALSE)
 ```
 

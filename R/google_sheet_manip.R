@@ -11,7 +11,7 @@
 #' @export
 google_microbial_sig_sheet = function() {
   key = data.frame(googlesheets::gs_ls()) %>%
-    dplyr::filter(sheet_title=='Microbial signatures curation') %>%
+    dplyr::filter(sheet_title == 'Microbial signatures curation') %>%
     dplyr::pull(sheet_key)
   googlesheets::gs_key(key)
 }
@@ -26,11 +26,24 @@ google_microbial_sig_sheet = function() {
 #'
 #' @export
 curation_sheet = function(...) {
-    cfile <- system.file('extdata/curation.csv.gz', package = "MungeCuratedMGS")
-    sheet <- readr::read_csv(cfile, skip=1, ...)
-    if(ncol(sheet) == 1L){
-      stop("Run `git lfs pull` to get curation sheet, then re-install package")
-    }
-    sheet <- sheet[-1,]
-    sheet[!is.na(sheet$PMID),]
+  cfile <-
+    system.file('extdata/curation.csv.gz', package = "MungeCuratedMGS")
+  sheet <- readr::read_csv(cfile, skip = 1, ...)
+  if (ncol(sheet) == 1L) {
+    stop("Run `git lfs pull` to get curation sheet, then re-install package")
+  }
+  sheet <- sheet[-1, ]
+  sheet <- sheet[!is.na(sheet$PMID), ]
+  sheet <- sheet[, !colnames(sheet) %in% c("Dropbox", "PubMed")]
+  ##remove all NA columns
+  sheet <- sheet[, colSums(is.na(sheet)) < nrow(sheet)] 
+  ## clean up blank rows
+  blank <- !complete.cases(sheet[, c("source within paper", "Free-form description", "taxon 1")])
+  if (sum(blank) > 0) {
+    warning(paste(
+      "The following PMIDs have missing data.", sum(blank), "rows were dropped from:",
+      paste(sort(unique(sheet[blank, ]$PMID)), collapse=" ")
+      ))
+    sheet <- sheet[!blank, ]
+  }
 }

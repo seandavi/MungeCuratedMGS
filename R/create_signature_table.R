@@ -7,9 +7,6 @@
 #' @importFrom reshape2 melt
 #' @export
 create_signature_table = function(sheet = curation_sheet()) {
-    ## create signature sheet
-    sheet <- sheet[, !colnames(sheet) %in% c("Dropbox", "PubMed")]
-    sheet <- sheet[, colSums(is.na(sheet)) < nrow(sheet)] ##remove all NA columns
     m2n <- MungeCuratedMGS:::metaphlan2ncbi()
     ind <- grep("^taxon", colnames(sheet))
     for (i in ind){
@@ -17,5 +14,6 @@ create_signature_table = function(sheet = curation_sheet()) {
     }
     colnames(sheet) <- sub("^taxon.+", "Metaphlan", colnames(sheet))
     colnames(sheet) <- sub("^NCBI.+", "NCBI", colnames(sheet))
+    sheet <- sheet[, !colnames(sheet) %in% studyCols()]
     return(sheet)
 }
