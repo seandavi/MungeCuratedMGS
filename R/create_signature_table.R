@@ -15,5 +15,7 @@ create_signature_table = function(sheet = curation_sheet()) {
     colnames(sheet) <- sub("^taxon.+", "Metaphlan", colnames(sheet))
     colnames(sheet) <- sub("^NCBI.+", "NCBI", colnames(sheet))
     sheet <- sheet[, !colnames(sheet) %in% studyCols()]
+    colnames(sheet) <- sub("source within paper", "source", colnames(sheet))
+    colnames(sheet) <- sub("Free-form description", "description", colnames(sheet))
     return(sheet)
 }
