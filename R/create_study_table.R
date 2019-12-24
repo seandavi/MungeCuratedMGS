@@ -9,21 +9,7 @@
 #' @export
 create_study_table <- function(sheet = curation_sheet())
 {
-    ## do lower & upper bound 16S
-    vlist <- strsplit(sheet$`16S variable region`, "-")
-    for (i in which(!is.na(vlist))) {
-        if (length(vlist[[i]]) == 1L)
-            vlist[[i]] <- rep(vlist[[i]], 2)
-    }
-    vlist <- do.call(rbind, vlist)
-    sheet$`16s variable region (lower bound)` <- vlist[, 1]
-    sheet$`16s variable region (upper bound)` <- vlist[, 2]
-    sheet <- sheet[, !colnames(sheet) %in% "16S variable region"]
-    ## add extra columns
-    sheet$DOI <- NA
-    sheet$BibTex <- NA
-    sheet$URI <- NA
-    sheet <- sheet[, c(studyCols(), "DOI", "BibTex", "URI")]
+    sheet <- sheet[, colnames(sheet) %in% studyCols()]
     return(sheet)
 }
 
@@ -40,14 +26,17 @@ studyCols <- function() {
     return(
         c(
             "sequencing type",
-            "16s variable region (lower bound)",
-            "16s variable region (upper bound)",
+            "16S variable region (lower bound)",
+            "16S variable region (upper bound)",
             "sequencing platform",
             "study design",
             "matched on",
             "confounders controlled for",
             "antibiotics exclusion",
             "Country",
+            "DOI", 
+            "BibTex", 
+            "URI",
             "PMID"
         )
     )

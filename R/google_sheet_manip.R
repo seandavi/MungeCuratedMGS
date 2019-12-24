@@ -46,4 +46,47 @@ curation_sheet = function(...) {
       ))
     sheet <- sheet[!blank, ]
   }
+  # Get rid of variants of "case =" at start of case definition
+  sheet$`case definition` <-
+    sub("^\\s*case\\s*=\\s*", "", sheet$`case definition`, perl = TRUE)
+  ## do lower & upper bound 16S
+  vlist <- strsplit(sheet$`16S variable region`, "-")
+  for (i in which(!is.na(vlist))) {
+    if (length(vlist[[i]]) == 1L)
+      vlist[[i]] <- c(vlist[[i]], NA)
+  }
+  vlist <- do.call(rbind, vlist)
+  sheet$`16S variable region (lower bound)` <- vlist[, 1]
+  sheet$`16S variable region (upper bound)` <- vlist[, 2]
+  sheet <- sheet[, !colnames(sheet) %in% "16S variable region"]
+  ## add extra columns
+  sheet$DOI <- NA
+  sheet$BibTex <- NA
+  sheet$URI <- NA
+  contr <- strsplit(sheet$`contrast (list control group last)`, "\\s*[Vv][Ss]\\.*\\s*")
+  for (i in which(lengths(contr) == 1)) {
+    contr[[i]] <- rep(contr[[i]], 2)
+  }
+  contr <- do.call(rbind, contr)
+  colnames(contr) <- c("Group 1 name", "Group 0 name")
+  sheet <- cbind(sheet, contr)
+  sheet <- sheet[, !colnames(sheet) %in% "contrast (list control group last)"]
+  ## Increased abundance in Group 1?
+  sheet$`Increased abundance in Group 1` <-
+    ifelse(sheet$`UP or DOWN` == "DOWN", "NO", "YES")
+  sheet <- sheet[, !colnames(sheet) %in% "UP or DOWN"]
+  ## upper-case MHT
+  sheet$`threshold corrected for MHT? yes/no` <- toupper(sheet$`threshold corrected for MHT? yes/no`)
+  ## Column renaming for consistency with Ike's example
+  colnames(sheet) <- sub("source within paper", "source", colnames(sheet))
+  colnames(sheet) <- sub("Free-form description", "description", colnames(sheet), fixed = TRUE)
+  colnames(sheet) <- sub("date of curation", "date", colnames(sheet), fixed = TRUE)
+  colnames(sheet) <- sub("threshold corrected for MHT? yes/no", "MHT correction", colnames(sheet), fixed = TRUE)
+  colnames(sheet) <- sub("control (unexposed) sample size", "Group 0 sample size", colnames(sheet), fixed = TRUE)
+  colnames(sheet) <- sub("case (exposed) sample size", "Group 1 sample size", colnames(sheet), fixed = TRUE)
+  colnames(sheet) <- sub("case definition", "Group 1 definition", colnames(sheet), fixed = TRUE)
+  colnames(sheet) <- sub("Shannon index", "Shannon", colnames(sheet), fixed = TRUE)
+  colnames(sheet) <- sub("Country", "location", colnames(sheet), fixed = TRUE)
+  return(sheet)
 }
+

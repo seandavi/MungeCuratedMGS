@@ -1,12 +1,13 @@
 Package: MungeCuratedMGS
 Type: Package
 Title: Data munging for Curated Microbiome Signatures
-Version: 0.1.1
+Version: 0.2.0
 Author: Sean Davis, Levi Waldron
 Maintainer: Sean Davis <seandavi@gmail.com>
 Description: Data munging for Curated Microbiome Signatures
+Requires:
+    dplyr
 Imports: 
-  dplyr,
   readr,
   magrittr
 Suggests: 
