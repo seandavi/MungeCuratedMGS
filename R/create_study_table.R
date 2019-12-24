@@ -1,4 +1,4 @@
-#' create study table
+#' create study table in two-table data model
 #'
 #' This will be the `study` data model
 #'
@@ -8,59 +8,63 @@
 #' @importFrom tibble as_tibble
 #' @export
 create_study_table <- function(sheet = curation_sheet())
-{ 
-    # content
-    rel.cols <- c("sequencing type",
-                    "16S variable region",
-                    "sequencing platform",
-                    "study design",
-                    "matched on",
-                    "confounders controlled for",
-                    "antibiotics exclusion",
-                    "Country")
-                    # , `location`, `citation`
-    feats <- lapply(rel.cols, .studyFeature, sheet = sheet)
-    stbl <- do.call(cbind, feats)                  
-    colnames(stbl) <- tolower(rel.cols)
+{
+    sheet <- sheet[, colnames(sheet) %in% studyCols()]
+    return(sheet)
+}
 
-    # keys
-    prim.key <- create_keys("STUD", nrow(stbl))
-    
-    loc.tab <- create_location_table()
-    ind <- match(stbl[,"country"], loc.tab$country)
-    loc.key <- loc.tab[ind, "primary_key"]
-    colnames(loc.key) <- "location"
-    
-    pmids <- unique(sheet$PMID)    
-    cit.tab <- create_citation_table(sheet)
-    ind <- match(pmids, cit.tab$PMID)
-    cit.key <- cit.tab[ind, "primary_key"]
-    colnames(cit.key) <- "citation"
 
-    stbl <- stbl[,-ncol(stbl)] 
-    stbl <- cbind(primary_key = prim.key, stbl, loc.key, cit.key)
-    for(i in c(1,6:10)) stbl[,i] <- as.character(stbl[,i]) 
-    as_tibble(stbl)
+#' studyCols
+#'
+#' @return A vector with the column names of the study table (without key)
+#' @export
+#'
+#' @examples
+#' studyCols()
+#' 
+studyCols <- function() {
+    return(
+        c(
+            "sequencing type",
+            "16S variable region (lower bound)",
+            "16S variable region (upper bound)",
+            "sequencing platform",
+            "study design",
+            "matched on",
+            "confounders controlled for",
+            "antibiotics exclusion",
+            "Country",
+            "DOI", 
+            "BibTex", 
+            "URI",
+            "PMID"
+        )
+    )
 }
 
 .studyFeature <- function(feature, sheet)
 {
-    sheet <- as.data.frame(sheet) 
-    l <- split(sheet[,feature], sheet[,"PMID"])
+    sheet <- as.data.frame(sheet)
+    l <- split(sheet[, feature], sheet[, "PMID"])
     ul <- lapply(l, unique)
     lg1 <- lengths(ul) > 1
-
-    if(any(lg1))
+    
+    if (any(lg1))
     {
-        wmsg <- paste("PMIDs",
-                        paste(names(lg1)[lg1], collapse = ", "),       
-                        "with >1 unique", feature, ".\n", 
-                        "Chosing the first one for each of them.")
+        wmsg <- paste(
+            "PMIDs",
+            paste(names(lg1)[lg1], collapse = ", "),
+            "with >1 unique",
+            feature,
+            ".\n",
+            "Chosing the first one for each of them."
+        )
         warning(wmsg)
-        ul <- lapply(ul, function(x) x[1])
+        ul <- lapply(ul, function(x)
+            x[1])
     }
     
-    unname(unlist(ul))    
+    unname(unlist(ul))
 }
 
 #create_study_table <- function() {

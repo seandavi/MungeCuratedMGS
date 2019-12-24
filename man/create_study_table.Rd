@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_study_table.R
 \name{create_study_table}
 \alias{create_study_table}
-\title{create study table}
+\title{create study table in two-table data model}
 \usage{
 create_study_table(sheet = curation_sheet())
 }

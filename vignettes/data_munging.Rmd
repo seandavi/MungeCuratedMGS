@@ -15,7 +15,7 @@ vignette: |
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
 ```
 
 # Installation
@@ -50,21 +50,21 @@ suppressMessages(gs_auth(token = "/tmp/googlesheets_token.rds", verbose = FALSE)
 
 ### EFO
 
-```{r efo, cache=TRUE}
+```{r efo, cache=TRUE, eval=FALSE}
 efo = get_efo()
 head(efo)
 ```
 
 ### UBERON
 
-```{r uberon, cache=TRUE}
+```{r uberon, cache=TRUE, eval=FALSE}
 uberon = get_uberon()
 head(uberon)
 ```
 
 Ontologies can be combined like so:
 
-```{r}
+```{r, eval=FALSE}
 library(dplyr)
 full_ontologies = dplyr::bind_rows(uberon, efo)
 ```
@@ -73,58 +73,75 @@ full_ontologies = dplyr::bind_rows(uberon, efo)
 
 ### Names and Taxon IDs
 
-```{r taxon_names, cache=TRUE}
+```{r taxon_names, cache=TRUE, eval=FALSE}
 taxon_dir = get_taxon_dump_files()
 taxon_id_names = get_taxon_names(taxon_dir)
 head(taxon_id_names, 10)
 ```
 
-## Curation Tables
-
-### Signature metadata
-
-```{r sig_table_from_gs}
-sig_table = create_signaturemetadata_table()
-head(sig_table)
-```
-
-### Signature
+## Write all curation tables as csv files
 
 ```{r}
-create_signature_table()
+sheet <- curation_sheet()
+dim(sheet)
 ```
-
-### Citation
-
-[Issue #6](https://github.com/seandavi/MungeCuratedMGS/issues/6)
-
-```{r citation_table}
-citation_table = create_citation_table()
-head(citation_table)
-```
-
-### Study
 
 ```{r}
-create_study_table()
+study <- create_study_table(sheet)
+signature <- create_signature_table(sheet)
 ```
 
-### Contrast
-
+Create keys and write to file:
 ```{r}
-create_contrast_table()
+signature$Study <- create_keys("Study ", study)
+signature$`Page Name` <- sort(create_keys("Signature ", signature))
+study$`Page Name` <- create_keys("Study ", study)
+study <- unique(study)
+study <- study[order(study$`Page Name`), ]
+write.csv(study, file="studies.csv", row.names = FALSE)
+write.csv(signature, file="signatures.csv", row.names = FALSE)
 ```
 
-### Citation
-
+Write the signatures file again, alternating metaphlan and NCBI columns:
 ```{r}
-create_citation_table()
+nonsigcols <- grep("Metaphlan|NCBI|Study|Page", colnames(signature), invert=TRUE)
+sigcols <- as.integer(t(cbind(grep("Metaphlan", colnames(signature)), grep("NCBI", colnames(signature)))))
+keys <- grep("Study|Page", colnames(signature))
+signature2 <- signature[, c(nonsigcols, sigcols, keys)]
+write.csv(signature2, file="signatures_alternatingNCBI.csv", row.names = FALSE)
 ```
 
-## Write all tables as csv files
+Single PMIDs split into multiple studies
+```{r}
+pmidsplits <- table(study$PMID)
+pmidsplits <- pmidsplits[pmidsplits > 1]
+pmidsplits <- names(pmidsplits)
+splits <- study[study$PMID %in% pmidsplits, ]
+(splits <- splits[order(splits$PMID), ])
+write.csv(splits, "splitstudies.csv", row.names = FALSE)
+```
 
-```{r, message=FALSE}
-res <- write_all_tables()
-names(res)
+```{r, eval=FALSE}
+signature_ike <- readr::read_csv("~/Downloads/Signature_ike.csv")
+study_ike <- readr::read_csv("~/Downloads/Studies_ike.csv")
+```
+
+```{r, eval=FALSE}
+colnames(signature_ike)[!colnames(signature_ike) %in% colnames(signature)] %>%
+  grep(pattern="metaphlan|ncbi", x=., invert = TRUE, ignore.case = TRUE, value = TRUE)
+```
+```{r, eval=FALSE}
+colnames(signature)[!colnames(signature) %in% colnames(signature_ike)] %>%
+  grep(pattern="metaphlan|ncbi", x=., invert = TRUE, ignore.case = TRUE, value = TRUE)
+```
+
+```{r, eval=FALSE}
+colnames(study_ike)[!colnames(study_ike) %in% colnames(study)] %>%
+  grep(pattern="metaphlan|ncbi", x=., invert = TRUE, ignore.case = TRUE, value = TRUE)
+```
+
+```{r, eval=FALSE}
+colnames(study)[!colnames(study) %in% colnames(study_ike)] %>%
+  grep(pattern="metaphlan|ncbi", x=., invert = TRUE, ignore.case = TRUE, value = TRUE)
 ```
 
