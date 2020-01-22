@@ -5,13 +5,8 @@
 #' @param sheet a data.frame, the curation worksheet from google sheet
 #'     (sheet 2 as of now)
 #'
-#' @importFrom tibble as_tibble
 #' @export
-create_study_table <- function(sheet = curation_sheet())
-{
-    sheet <- sheet[, colnames(sheet) %in% studyCols()]
-    return(sheet)
-}
+create_study_table <- function(sheet = curation_sheet()) sheet[, studyCols()]
 
 
 #' studyCols
@@ -22,25 +17,8 @@ create_study_table <- function(sheet = curation_sheet())
 #' @examples
 #' studyCols()
 #' 
-studyCols <- function() {
-    return(
-        c(
-            "sequencing type",
-            "16S variable region (lower bound)",
-            "16S variable region (upper bound)",
-            "sequencing platform",
-            "study design",
-            "matched on",
-            "confounders controlled for",
-            "antibiotics exclusion",
-            "Country",
-            "DOI", 
-            "BibTex", 
-            "URI",
-            "PMID"
-        )
-    )
-}
+studyCols <- function() c("study design", "PMID", "DOI", "BibTex", "URI")
+
 
 .studyFeature <- function(feature, sheet)
 {
