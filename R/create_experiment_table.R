@@ -5,7 +5,10 @@
 #' @param curation_sheet a data.frame, the curation worksheet from google sheet (sheet 2 as of now)
 #'
 #' @export
-create_experiment_table <- function(sheet = curation_sheet()) sheet[, experimentCols()]
+create_experiment_table <- function(sheet = curation_sheet())
+{
+    sheet <- sheet[, experimentCols()]
+}
 
 
 #' experimentCols
@@ -24,6 +27,8 @@ experimentCols <- function() {
             "condition",
             "Group 0 sample size",
             "Group 1 sample size",
+            "Group 0 name",
+            "Group 1 name",
             "Group 1 definition",
             "host species",
             "body_site",  

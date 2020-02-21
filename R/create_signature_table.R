@@ -9,6 +9,15 @@
 create_signature_table = function(sheet = curation_sheet()) {
     m2n <- MungeCuratedMGS:::metaphlan2ncbi()
     ind <- grep("^taxon", colnames(sheet))
+   
+    nr.fields <- length(ind) 
+    .rmDuplicates <- function(x)
+    {
+        ux <- unique(x[!is.na(x)])
+        c(ux, rep(NA, nr.fields - length(ux)))
+    }
+    sheet[,ind] <- t(apply(sheet[,ind], 1, .rmDuplicates))    
+
     for (i in ind){
         sheet[[sub("taxon", "NCBI", colnames(sheet)[i])]] <- as.integer(m2n[sheet[[i]]])
     }
