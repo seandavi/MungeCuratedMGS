@@ -88,17 +88,30 @@ dim(sheet)
 
 ```{r}
 study <- create_study_table(sheet)
+experiment <- create_experiment_table(sheet)
 signature <- create_signature_table(sheet)
 ```
 
 Create keys and write to file:
 ```{r}
-signature$Study <- create_keys("Study ", study)
-signature$`Page Name` <- sort(create_keys("Signature ", signature))
-study$`Page Name` <- create_keys("Study ", study)
+signature$Experiment <- create_keys("Experiment ", experiment)
+sig.keys <- create_keys("Signature ", signature)
+ind <- vapply(sig.keys, function(s) unlist(strsplit(s, " "))[2], character(1))
+signature$`Page Name` <- sig.keys[order(as.integer(ind))]
+
+experiment$Study <- create_keys("Study", study)
+exp.keys <- create_keys("Experiment ", experiment)
+ind <- vapply(exp.keys, function(s) unlist(strsplit(s, " "))[2], character(1))
+experiment$`Page Name` <- exp.keys[order(as.integer(ind))] 
+experiment <- unique(experiment)
+
+stud.keys <- create_keys("Study ", study)
+ind <- vapply(stud.keys, function(s) unlist(strsplit(s, " "))[2], character(1))
+study$`Page Name`<- stud.keys[order(as.integer(ind))] 
 study <- unique(study)
-study <- study[order(study$`Page Name`), ]
+
 write.csv(study, file="studies.csv", row.names = FALSE)
+write.csv(experiment, file="experiments.csv", row.names = FALSE)
 write.csv(signature, file="signatures.csv", row.names = FALSE)
 ```
 

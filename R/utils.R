@@ -14,8 +14,8 @@ create_keys <- function(prefix, x){
     string <- Reduce(paste, x)
     l1 <- rank(string, ties.method = "min")
     l1 <- factor(l1, labels = seq(length(unique(l1))))
-    l1 <- formatC(l1, format="d", width=3, flag="0")
-    paste0(prefix, l1)
+    # l1 <- formatC(l1, format="d", width=3, flag="0")
+    paste0(prefix, as.character(l1))
 }
 
 metaphlan2ncbi <- function(mid)
