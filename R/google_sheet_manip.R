@@ -43,9 +43,10 @@ curation_sheet = function(...)
     # transform diversity columns
     ud <- split(sheet[, "UP or DOWN"], sheet[,"PMID"])
     odd.pmids <- names(ud)[lengths(ud) %% 2 != 0]
-    sheet <- sheet[!(sheet[,"PMID"] %in% uneven.pmids),] 
-    warning(paste("Removing", length(uneven.pmids), 
-                    "PMIDs with an odd number of UP/DOWN rows:", odd.pmids))
+    sheet <- sheet[!(sheet[,"PMID"] %in% odd.pmids),] 
+    warning(paste("Removing", length(odd.pmids), 
+                    "PMIDs with an odd number of UP/DOWN rows:", 
+                    paste(odd.pmids, collapse = ", ")))
 
 
     .transform <- function(diversity) 
