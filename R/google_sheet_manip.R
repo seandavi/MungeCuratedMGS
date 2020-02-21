@@ -40,13 +40,17 @@ curation_sheet = function(...) {
     sheet <- sheet[, colSums(is.na(sheet)) < nrow(sheet)] 
     
     ## clean up blank rows
-    blank <- !complete.cases(sheet[, c("source within paper", "Free-form description", "taxon 1")])
+    blank <- !complete.cases(sheet[, c("source within paper", "Free-form description")])
+    NOtaxaNOdiversity <- sheet[, c("taxon 1", "Pielou", "Shannon index", "Chao1", "Simpson", 
+                                 "Inverse Simpson", "Richness")]
+    NOtaxaNOdiversity <- apply(NOtaxaNOdiversity, 1, function(x) all(is.na(x)))
+    forremoval <- blank | NOtaxaNOdiversity
     if (sum(blank) > 0) {
       warning(paste(
-        "The following PMIDs have missing data.", sum(blank), "rows were dropped from:",
-        paste(sort(unique(sheet[blank, ]$PMID)), collapse=" ")
+        "The following PMIDs have missing data.", sum(forremoval), "rows were dropped from:",
+        paste(sort(unique(sheet[forremoval, ]$PMID)), collapse=" ")
         ))
-      sheet <- sheet[!blank, ]
+      sheet <- sheet[!forremoval, ]
     }
   
     # Get rid of variants of "case =" at start of case definition
