@@ -94,20 +94,22 @@ signature <- create_signature_table(sheet)
 
 Create keys and write to file:
 ```{r}
-signature$Experiment <- create_keys("Experiment ", experiment)
-sig.keys <- create_keys("Signature ", signature)
-ind <- vapply(sig.keys, function(s) unlist(strsplit(s, " "))[2], character(1))
-signature$`Page Name` <- sig.keys[order(as.integer(ind))]
+freeform.cols <- c("antibiotics exclusion", "Group 1 definition", "source", "description")
 
-experiment$Study <- create_keys("Study", study)
-exp.keys <- create_keys("Experiment ", experiment)
-ind <- vapply(exp.keys, function(s) unlist(strsplit(s, " "))[2], character(1))
-experiment$`Page Name` <- exp.keys[order(as.integer(ind))] 
+sig.keys <- paste("Signature", seq_len(nrow(signature)))
+exp.cols <- setdiff(colnames(experiment), freeform.cols)
+exp.keys <- create_keys("Experiment ", experiment[,exp.cols])
+stud.cols <- setdiff(colnames(study), freeform.cols)
+stud.keys <- create_keys("Study ", study[,stud.cols])
+
+signature$Experiment <- exp.keys
+experiment$Study <- stud.keys
+
+signature$`Page Name` <- sig.keys
+experiment$`Page Name` <- exp.keys
+study$`Page Name`<- stud.keys 
+
 experiment <- unique(experiment)
-
-stud.keys <- create_keys("Study ", study)
-ind <- vapply(stud.keys, function(s) unlist(strsplit(s, " "))[2], character(1))
-study$`Page Name`<- stud.keys[order(as.integer(ind))] 
 study <- unique(study)
 
 write.csv(study, file="studies.csv", row.names = FALSE)
