@@ -6,10 +6,11 @@
 #'
 #' @importFrom reshape2 melt
 #' @export
-create_signature_table = function(sheet = curation_sheet()) {
+create_signature_table <- function(sheet = curation_sheet()) {
     m2n <- MungeCuratedMGS:::metaphlan2ncbi()
     ind <- grep("^taxon", colnames(sheet))
-   
+  
+    # some rows contain duplicated taxa (curator accidentally entered twice?)
     nr.fields <- length(ind) 
     .rmDuplicates <- function(x)
     {
@@ -19,10 +20,12 @@ create_signature_table = function(sheet = curation_sheet()) {
     sheet[,ind] <- t(apply(sheet[,ind], 1, .rmDuplicates))    
 
     for (i in ind){
-        sheet[[sub("taxon", "NCBI", colnames(sheet)[i])]] <- as.integer(m2n[sheet[[i]]])
+        j <- sub("taxon", "NCBI", colnames(sheet)[i])
+        sheet[[j]] <- as.integer(m2n[sheet[[i]]])
+        na.ind <- !is.na(sheet[,i]) & is.na(sheet[,j])
+        sheet[na.ind, j] <- sheet[na.ind, i]
     }
-    colnames(sheet) <- sub("^taxon.+", "Metaphlan", colnames(sheet))
-    colnames(sheet) <- sub("^NCBI.+", "NCBI", colnames(sheet))
+    sheet <- sheet[,-ind]
     sheet <- sheet[, !colnames(sheet) %in% c(studyCols(), experimentCols())]
     return(sheet)
 }
