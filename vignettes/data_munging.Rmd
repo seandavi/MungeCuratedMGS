@@ -94,7 +94,7 @@ cat(allfeats, file = "../inst/extdata/cMD_allfeats.txt", sep = "\n")
 ```{r}
 feat.file <- system.file("extdata/cMD_allfeats.txt", package = "MungeCuratedMGS")
 allfeats <- scan(feat.file, what = "character")
-m2n <- metaplan2ncbi(metaphlan.version = "2.0")
+m2n <- metaphlan2ncbi(metaphlan.version = "2.0")
 m2n.cmd <- m2n[allfeats] 
 m2n.cmd <- m2n.cmd[!is.na(m2n.cmd)]
 ```
