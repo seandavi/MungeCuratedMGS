@@ -79,7 +79,36 @@ taxon_id_names = get_taxon_names(taxon_dir)
 head(taxon_id_names, 10)
 ```
 
-## Write all curation tables as csv files
+### obtain the set cMD features that map to an NCBI TaxID
+
+```{r, eval = FALSE}
+library(curatedMetagenomicData)
+ds <- curatedMetagenomicData("*metaphlan*", dryrun = TRUE)
+ds <- grep("WenC", ds, value = TRUE, invert = TRUE)
+esets <- curatedMetagenomicData(ds, dryrun = FALSE)
+feats <- lapply(esets, rownames)
+allfeats <- Reduce(union, feats)
+cat(allfeats, file = "../inst/extdata/cMD_allfeats.txt", sep = "\n")
+```
+
+```{r}
+feat.file <- system.file("extdata/cMD_allfeats.txt", package = "MungeCuratedMGS")
+allfeats <- scan(feat.file, what = "character")
+m2n <- metaplan2ncbi(metaphlan.version = "2.0")
+m2n.cmd <- m2n[allfeats] 
+m2n.cmd <- m2n.cmd[!is.na(m2n.cmd)]
+```
+
+```{r, eval = FALSE}
+dat <- cbind(names(m2n.cmd), unname(m2n.cmd))
+colnames(dat) <- c("metaphlan", "ncbi")
+write.csv(dat, file = "../inst/extdata/cMD_metaphlan2ncbi.csv", 
+            quote = FALSE, row.names = FALSE)
+```
+
+## Data export
+
+### Write all curation tables as csv files
 
 ```{r}
 sheet <- curation_sheet()

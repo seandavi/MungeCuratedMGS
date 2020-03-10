@@ -18,13 +18,33 @@ create_keys <- function(prefix, x){
     paste0(prefix, keys)
 }
 
-metaphlan2ncbi <- function(mid)
+#' metaphlan2ncbi
+#'
+#' @param metaphlan.version character. Choose between 2.0 or 3.0.  
+#' @return A named vector storing the mapping from MetaPhlan names to NCBI tax IDs
+#' @export
+metaphlan2ncbi <- function(metaphlan.version = c("2.0", "3.0"))
 {
+    metaphlan.version <- match.arg(metaphlan.version)
     ext.dir <- system.file("extdata", package = "MungeCuratedMGS")
-    mfile <- file.path(ext.dir, "metaphlan2ncbi.txt.gz")
+    mfile <- ifelse(metaphlan.version == "2.0", 
+                    "metaphlan2ncbi.txt.gz", 
+                    "mpa_v30_CHOCOPhlAn_201901_taxonomy.txt")
+    mfile <- file.path(ext.dir, mfile)
     map.df <- readr::read_tsv(mfile, 
                                 col_names = c("metaphlan", "ncbi"),
                                 col_types = "cc")
+
+    if(metaphlan.version == "3.0")
+    {
+        .f <- function(x)
+        {
+            spl <- unlist(strsplit(x, "\\|"))
+            spl[length(spl)]
+        }
+        map.df[,2] <- vapply(m32ncbi[,2], f, character(1), USE.NAMES = FALSE)
+        colnames(map.df) <- c("metaphlan", "ncbi")
+    }
     metaphlan2ncbi <- map.df$ncbi
     names(metaphlan2ncbi) <- map.df$metaphlan
     metaphlan2ncbi  

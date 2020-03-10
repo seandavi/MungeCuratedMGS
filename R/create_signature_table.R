@@ -7,7 +7,7 @@
 #' @importFrom reshape2 melt
 #' @export
 create_signature_table <- function(sheet = curation_sheet()) {
-    m2n <- MungeCuratedMGS:::metaphlan2ncbi()
+    m2n <- metaphlan2ncbi()
     ind <- grep("^taxon", colnames(sheet))
   
     # some rows contain duplicated taxa (curator accidentally entered twice?)
