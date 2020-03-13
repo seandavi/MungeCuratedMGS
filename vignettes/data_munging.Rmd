@@ -132,6 +132,7 @@ stud.cols <- setdiff(colnames(study), freeform.cols)
 stud.keys <- create_keys("Study ", study[,stud.cols])
 
 signature$Experiment <- exp.keys
+signature$Study <- stud.keys
 experiment$Study <- stud.keys
 
 signature$`Page Name` <- sig.keys
