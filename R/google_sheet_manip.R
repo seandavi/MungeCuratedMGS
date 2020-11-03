@@ -97,13 +97,15 @@ curation_sheet = function(...)
   
     # Get rid of variants of "case =" at start of case definition
     sheet$`case definition` <-
-      sub("^\\s*case\\s*=\\s*", "", sheet$`case definition`, perl = TRUE)
+      sub("^\\s*[cC]ase\\s*=\\s*", "", sheet$`case definition`, perl = TRUE)
   
     ## do lower & upper bound 16S
     vlist <- strsplit(sheet$`16S variable region`, "-")
     for (i in which(!is.na(vlist))) {
       if (length(vlist[[i]]) == 1L)
         vlist[[i]] <- c(vlist[[i]], NA)
+      else if (length(vlist[[i]]) > 2L)
+        vlist[[i]] <- vlist[[i]][c(1, length(vlist[[i]]))]
     }
     vlist <- do.call(rbind, vlist)
     sheet$`16S variable region (lower bound)` <- vlist[, 1]
@@ -115,6 +117,10 @@ curation_sheet = function(...)
     sheet$BibTex <- NA
     sheet$URI <- NA
     contr <- strsplit(sheet$`contrast (list control group last)`, "\\s*[Vv][Ss]\\.*\\s*")
+    pcontr <- sheet$PMID[lengths(contr) != 2]
+    if(length(pcontr)) 
+        warning("PMIDs with not well-defined contrasts: ", 
+                paste(unique(pcontr), collapse = ", "))
     for (i in which(lengths(contr) == 1)) {
       contr[[i]] <- rep(contr[[i]], 2)
     }

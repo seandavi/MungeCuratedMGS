@@ -1,184 +1,182 @@
-,country full names,study design,sequencing platform,statistical test,body_site,Environmental Ontology or Uberon Multi-species Anatomy Ontology?,condition,experimental factor ontology
-Levi Waldron,Afghanistan,case-control,DNA-DNA Hybridization,ANCOM,lung,http://purl.obolibrary.org/obo/UBERON_0002048,abdominalhernia,http://purl.obolibrary.org/obo/HP_0004299
-Nidhi Saini,Albania,"cross-sectional observational, not case-control",Human Intestinal Tract Chip,ANOSIM,milk,http://purl.obolibrary.org/obo/UBERON_0001913,abnormal glucose tolerance,http://www.ebi.ac.uk/efo/EFO_0002546
-Shaimaa Elsafoury,Algeria,time series / longitudinal observational,Illumina,ANOVA,nasal cavity,http://purl.obolibrary.org/obo/UBERON_0001707,accute-on-chronic liver failure ,http://www.ebi.ac.uk/efo/EFO_0007949
-Fatima Zohra,Andorra,laboratory experiment,Ion Torrent,chi-square,oral gland,http://purl.obolibrary.org/obo/UBERON_0010047,adenoma,http://www.ebi.ac.uk/efo/EFO_0000232
-Marianthi Thomatos,Angola,randomized controlled trial,Non-quantitative PCR,DESeq2,skin of body,http://purl.obolibrary.org/obo/UBERON_0002097,alzheimer's disease,https://www.ebi.ac.uk/efo/EFO_0000249
-Rimsha Azhar,Antigua and Barbuda,prospective cohort ,PacBio RS,edgeR,feces,http://purl.obolibrary.org/obo/UBERON_0001988,anorexia nervosa,http://www.ebi.ac.uk/efo/EFO_0004215
-Phyu Han,Argentina,,PhyloChip,Fisher's Exact Test,uterus,http://purl.obolibrary.org/obo/UBERON_0000995,anxiety disorder,http://www.ebi.ac.uk/efo/EFO_0006788
-Christina Brown,Armenia,,Roche454,Kolmogorov-Smirnov test,vagina,http://purl.obolibrary.org/obo/UBERON_0000996,aortic valve insufficiency,http://www.ebi.ac.uk/efo/EFO_0007148
-Yaseen Javaid,Australia,,RT-qPCR,Kruskall-Wallis,breast,http://purl.obolibrary.org/obo/UBERON_0000310,arthritis,http://www.ebi.ac.uk/efo/EFO_0005856
-Lora Kasselman,Austria,,,LEfSe,blood,http://purl.obolibrary.org/obo/UBERON_0000178,ascites,http://purl.obolibrary.org/obo/HP_0001541
-Utsav Patel,Azerbaijan,,,Linear Regression,head,http://purl.obolibrary.org/obo/UBERON_0000033,asthma,http://www.ebi.ac.uk/efo/EFO_0000270
-,Bahamas,,,Logistic Regression,neck,http://purl.obolibrary.org/obo/UBERON_0000974,attention deficit hyperactivity disorder,http://www.ebi.ac.uk/efo/EFO_0003888
-,Bahrain,,,Mann-Whitney (Wilcoxon),stomach,http://purl.obolibrary.org/obo/UBERON_0000945,autism,http://www.ebi.ac.uk/efo/EFO_0003758
-,Bangladesh,,,pearson correlation,axilla (underarm),http://purl.obolibrary.org/obo/UBERON_0009472,behcet's syndrome,http://www.ebi.ac.uk/efo/EFO_0003780
-,Barbados,,,PLS-DA (Partial least square discriminant analysis) ,saliva,http://purl.obolibrary.org/obo/UBERON_0001836,bipolar disorder,http://www.ebi.ac.uk/efo/EFO_0000289
-,Belarus,,,Random Forest Analysis,ear,http://purl.obolibrary.org/obo/UBERON_0001690,bladder calculus,http://www.ebi.ac.uk/efo/EFO_1000839
-,Belgium,,,spearman correlation,blood,http://purl.obolibrary.org/obo/UBERON_0000178,bladder disease, http://www.ebi.ac.uk/efo/EFO_1000018
-,Belize,,,t-test,meconium,http://purl.obolibrary.org/obo/UBERON_0007109,body mass index,http://www.ebi.ac.uk/efo/EFO_0004340
-,Benin,,,Welch's t-test,placenta,http://purl.obolibrary.org/obo/UBERON_0001987,body odor measurement,http://www.ebi.ac.uk/efo/EFO_0008386
-,Bhutan,,,Metastats,vagina orifice,http://purl.obolibrary.org/obo/UBERON_0012317,breast carcinoma ,http://www.ebi.ac.uk/efo/EFO_0000305
-,Bolivia,,,,tongue,http://purl.obolibrary.org/obo/UBERON_0001723,bronchitis,http://www.ebi.ac.uk/efo/EFO_0006505
-,Bosnia and Herzegovina,,,,dental plaque,http://purl.obolibrary.org/obo/UBERON_0016482,cellulitis,http://www.ebi.ac.uk/efo/EFO_0003035
-,Botswana,,,,elbow,http://purl.obolibrary.org/obo/UBERON_0001461,cervical glandular intraepithelial neoplasia,http://www.ebi.ac.uk/efo/EFO_1000165
-,Brazil,,,,vagina,http://purl.obolibrary.org/obo/UBERON_0000996,cesarean section,http://www.ebi.ac.uk/efo/EFO_0009636
-,Brunei Darussalam,,,,palatine tonsils,http://purl.obolibrary.org/obo/UBERON_0002373,chronic fatigue syndrome,http://www.ebi.ac.uk/efo/EFO_0004540
-,Bulgaria,,,,dorsum,http://purl.obolibrary.org/obo/UBERON_0001137,chronic obstructive pulmonary disease,http://www.ebi.ac.uk/efo/EFO_0000341
-,Burkina Faso,,,,uterine cervix,http://purl.obolibrary.org/obo/UBERON_0000002, cirrhosis of liver,http://www.ebi.ac.uk/efo/EFO_0001422
-,Burundi,,,,gingiva,http://purl.obolibrary.org/obo/UBERON_0001828,coeliac,http://www.ebi.ac.uk/efo/EFO_0001060
-,Cabo Verde,,,,nose,http://purl.obolibrary.org/obo/UBERON_0000004,colorectal cancer,http://www.ebi.ac.uk/efo/EFO_0005842
-,Cambodia,,,,pair of nares,http://purl.obolibrary.org/obo/UBERON_0002109,cough,http://purl.obolibrary.org/obo/HP_0012735
-,Cameroon,,,,external naris,http://purl.obolibrary.org/obo/UBERON_0005928,cystitis,http://www.ebi.ac.uk/efo/EFO_1000025
-,Canada,,,,internal naris,http://purl.obolibrary.org/obo/UBERON_0010425,dental enamel hypoplasia,http://www.ebi.ac.uk/efo/EFO_1001304
-,Central African Republic,,,,hard palate,http://purl.obolibrary.org/obo/UBERON_0003216,drug dependence ,http://www.ebi.ac.uk/efo/EFO_0003890
-,Chad,,,,buccal mucosa,http://purl.obolibrary.org/obo/UBERON_0006956,encephalomyelitis,http://www.ebi.ac.uk/efo/EFO_0001423
-,Chile,,,,sputum,http://purl.obolibrary.org/obo/UBERON_0007311,extrahepatic cholestasis,http://www.ebi.ac.uk/efo/EFO_1000933
-,China,,,,mesenteric lymph node,http://purl.obolibrary.org/obo/UBERON_0002509,gangrene,http://www.ebi.ac.uk/efo/EFO_0008574
-,Colombia,,,,posterior fornix,,gestational diabetes,http://www.ebi.ac.uk/efo/EFO_0004593
-,Comoros,,,,retroauricular crease,,hepatitis,http://purl.obolibrary.org/obo/HP_0012115
-,Congo,,,,oral swab specimen,http://purl.obolibrary.org/obo/OBI_0002607,high fat diet,http://www.ebi.ac.uk/efo/EFO_0002757
-,Cook Islands,,,,caecum,http://purl.obolibrary.org/obo/UBERON_0001153,human papilloma virus infection,http://www.ebi.ac.uk/efo/EFO_0001668
-,Costa Rica,,,,mouth,http://purl.obolibrary.org/obo/UBERON_0000165,hyperplastic polyp,http://www.ebi.ac.uk/efo/EFO_1000299
-,Croatia,,,,,,hypertension,http://www.ebi.ac.uk/efo/EFO_0000537
-,Cuba,,,,,,inflammatory bowel disease,http://www.ebi.ac.uk/efo/EFO_0003767
-,Cyprus,,,,,,multiple organ failure,http://www.ebi.ac.uk/efo/EFO_1001373
-,Czechia,,,,,,neonatal jaundice,http://www.ebi.ac.uk/efo/EFO_1000739
-,Côte d'Ivoire,,,,,,neurogenic bladder,http://purl.obolibrary.org/obo/HP_0000011
-,Democratic Republic of the Congo,,,,,,non-alcoholic fatty liver ,http://www.ebi.ac.uk/efo/EFO_1001248
-,Denmark,,,,,,"non-alcoholic fatty liver disease
-",http://www.ebi.ac.uk/efo/EFO_0003095
-,Djibouti,,,,,,obesity,http://www.ebi.ac.uk/efo/EFO_0001073
-,Dominica,,,,,,oral mucositis,http://www.ebi.ac.uk/efo/EFO_1001904
-,Dominican Republic,,,,,,osteoarthritis,http://www.ebi.ac.uk/efo/EFO_0002506
-,Ecuador,,,,,,otitis media with effusion,http://www.ebi.ac.uk/efo/EFO_0007415
-,Egypt,,,,,,parkinson's disease,http://www.ebi.ac.uk/efo/EFO_0002508
-,El Salvador,,,,,,peri-implantitis,http://www.ebi.ac.uk/efo/EFO_1001390
-,Equatorial Guinea,,,,,,periodontal pocket,http://www.ebi.ac.uk/efo/EFO_1001393
-,Eritrea,,,,,,periodontitis,http://www.ebi.ac.uk/efo/EFO_0000649
-,Estonia,,,,,,pneumonia,http://www.ebi.ac.uk/efo/EFO_0003106
-,Eswatini,,,,,,premature birth,http://www.ebi.ac.uk/efo/EFO_0003917
-,Ethiopia,,,,,,psoriasis,http://www.ebi.ac.uk/efo/EFO_0000676
-,Faroe Islands,,,,,,psychosis,http://www.ebi.ac.uk/efo/EFO_0005407
-,Fiji,,,,,,pyelonephritis,http://www.ebi.ac.uk/efo/EFO_1001141
-,Finland,,,,,,salmonella gastroenteritis,http://www.ebi.ac.uk/efo/EFO_0007475
-,France,,,,,,salmonellosis,http://www.ebi.ac.uk/efo/EFO_0007475
-,Gabon,,,,,,schizophrenia,http://www.ebi.ac.uk/efo/EFO_0000692
-,Gambia,,,,,,sepsis,http://purl.obolibrary.org/obo/HP_0100806
-,Georgia,,,,,,sessile serrated adenoma,http://www.ebi.ac.uk/efo/EFO_1000197
-,Germany,,,,,,sex design,http://www.ebi.ac.uk/efo/EFO_0001752
-,Ghana,,,,,,sjogren's syndrome,http://www.ebi.ac.uk/efo/EFO_0000699
-,Greece,,,,,,squamous cell carcinoma,http://www.ebi.ac.uk/efo/EFO_0000707
-,Grenada,,,,,,staphylococcus skin infection,http://www.ebi.ac.uk/efo/EFO_1001849
-,Guatemala,,,,,,stimulus or stress design,http://www.ebi.ac.uk/efo/EFO_0001762
-,Guinea,,,,,,tonsillitis,http://purl.obolibrary.org/obo/HP_0011110
-,Guinea-Bissau,,,,,,type I diabetes mellitus,http://www.ebi.ac.uk/efo/EFO_0001359
-,Guyana,,,,,,type II diabetes mellitus,http://www.ebi.ac.uk/efo/EFO_0001360
-,Haiti,,,,,,unipolar depression,http://www.ebi.ac.uk/efo/EFO_0003761
-,Honduras,,,,,,wilson disease,http://www.orpha.net/ORDO/Orphanet_905
-,Hungary,,,,,,smoking behavior,http://www.ebi.ac.uk/efo/EFO_0004318
-,Iceland,,,,,,chronic kidney disease,http://www.ebi.ac.uk/efo/EFO_0003884
-,India,,,,,,post-traumic stress disorder,http://www.ebi.ac.uk/efo/EFO_0001358
-,Indonesia,,,,,,oral halitosis,
-,Iran,,,,,,gingivitis,http://purl.obolibrary.org/obo/MONDO_0002508
-,Iraq,,,,,,physical activity,http://www.ebi.ac.uk/efo/EFO_0003940
-,Ireland,,,,,,opioid dependence,http://www.ebi.ac.uk/efo/EFO_0005611
-,Israel,,,,,,diet,http://www.ebi.ac.uk/efo/EFO_0002755
-,Italy,,,,,,oral leukoplakia,http://purl.obolibrary.org/obo/HP_0002745
-,Jamaica,,,,,,multiple sclerosis,http://www.ebi.ac.uk/efo/EFO_0003885
-,Japan,,,,,,gastric carcinoma,http://www.ebi.ac.uk/efo/EFO_0000178
-,Jordan,,,,,,lung cancer,http://purl.obolibrary.org/obo/MONDO_0008903
-,Kazakhstan,,,,,,preterm premature rupture of the membranes,http://purl.obolibrary.org/obo/MONDO_0012511
-,Kenya,,,,,,major depressive disorder,http://purl.obolibrary.org/obo/MONDO_0002009
-,Kiribati,,,,,,air pollution,http://purl.obolibrary.org/obo/ENVO_02500037
-,Kuwait,,,,,,polycystic ovary syndrome,http://www.ebi.ac.uk/efo/EFO_0000660
-,Kyrgyzstan,,,,,,breast cancer,http://purl.obolibrary.org/obo/MONDO_0007254
-,Laos,,,,,,prostate cancer,http://purl.obolibrary.org/obo/MONDO_0008315
-,Latvia,,,,,,esophageal cancer,http://purl.obolibrary.org/obo/MONDO_0007576
-,Lebanon,,,,,,esophageal carcinoma,http://www.ebi.ac.uk/efo/EFO_0002916
-,Lesotho,,,,,,titanium dioxide nanoparticles,http://purl.obolibrary.org/obo/XCO_0000339
-,Liberia,,,,,,cervical cancer,http://purl.obolibrary.org/obo/MONDO_0002974
-,Libya,,,,,,periodontal disease,http://purl.obolibrary.org/obo/MONDO_0002635
-,Lithuania,,,,,,head and neck carcinoma,http://purl.obolibrary.org/obo/MONDO_0002038
-,Luxembourg,,,,,,head and neck malignant neoplasia,http://www.ebi.ac.uk/efo/EFO_0006859
-,Madagascar,,,,,,head and neck squamous cell carcinoma,http://www.ebi.ac.uk/efo/EFO_0000181
-,Malawi,,,,,,postpartum,http://www.ebi.ac.uk/efo/EFO_0008562
-,Malaysia,,,,,,gastric cancer,http://purl.obolibrary.org/obo/MONDO_0001056
-,Maldives,,,,,,gingival disease,http://www.ebi.ac.uk/efo/EFO_0009670
-,Mali,,,,,,chronic hepatitis B virus infection,http://www.ebi.ac.uk/efo/EFO_0004239
-,Malta,,,,,,digestive system cancer,http://purl.obolibrary.org/obo/MONDO_0002516
-,Marshall Islands,,,,,,tongue neoplasm,http://www.ebi.ac.uk/efo/EFO_0003871
-,Mauritania,,,,,,pancreatic carcinoma,http://www.ebi.ac.uk/efo/EFO_0002618
-,Mauritius,,,,,,cannabis use,http://www.ebi.ac.uk/efo/EFO_0007585
-,Mexico,,,,,,substance related disorder,http://purl.obolibrary.org/obo/MONDO_0002494
-,Micronesia,,,,,,,
-,Monaco,,,,,,,
-,Mongolia,,,,,,,
-,Montenegro,,,,,,,
-,Morocco,,,,,,,
-,Mozambique,,,,,,,
-,Myanmar,,,,,,,
-,Namibia,,,,,,,
-,Nauru,,,,,,,
-,Nepal,,,,,,,
-,Netherlands,,,,,,,
-,New Zealand,,,,,,,
-,Nicaragua,,,,,,,
-,Niger,,,,,,,
-,Nigeria,,,,,,,
-,Niue,,,,,,,
-,North Korea,,,,,,,
-,North Macedonia,,,,,,,
-,Norway,,,,,,,
-,Oman,,,,,,,
-,Pakistan,,,,,,,
-,Palau,,,,,,,
-,Panama,,,,,,,
-,Papua New Guinea,,,,,,,
-,Paraguay,,,,,,,
-,Peru,,,,,,,
-,Philippines,,,,,,,
-,Poland,,,,,,,
-,Portugal,,,,,,,
-,Qatar,,,,,,,
-,Republic of Korea,,,,,,,
-,Republic of Moldova,,,,,,,
-,Romania,,,,,,,
-,Russian Federation,,,,,,,
-,Rwanda,,,,,,,
-,Saint Kitts and Nevis,,,,,,,
-,Saint Lucia,,,,,,,
-,Saint Vincent and the Grenadines,,,,,,,
-,Samoa,,,,,,,
-,San Marino,,,,,,,
-,Sao Tome and Principe,,,,,,,
-,Saudi Arabia,,,,,,,
-,Senegal,,,,,,,
-,Serbia,,,,,,,
-,Seychelles,,,,,,,
-,Sierra Leone,,,,,,,
-,Singapore,,,,,,,
-,Slovakia,,,,,,,
-,Slovenia,,,,,,,
-,Solomon Islands,,,,,,,
-,Somalia,,,,,,,
-,South Africa,,,,,,,
-,South Korea,,,,,,,
-,South Sudan,,,,,,,
-,Spain,,,,,,,
-,Sri Lanka,,,,,,,
-,Sudan,,,,,,,
-,Suriname,,,,,,,
-,Sweden,,,,,,,
-,Switzerland,,,,,,,
-,Syrian Arab Republic,,,,,,,
-,Tajikistan,,,,,,,
-,Thailand,,,,,,,
-,Timor-Leste,,,,,,,
-,Togo,,,,,,,
-,Tokelau,,,,,,,
-,Tonga,,,,,,,
-,Trinidad and Tobago,,,,,,,
+Curators,country full names,study design,sequencing platform,statistical test,body_site, uber-anatomy ontology,condition,experimental factor ontology
+Levi Waldron,Afghanistan,case-control,DNA-DNA Hybridization,ANCOM,axilla,http://purl.obolibrary.org/obo/UBERON_0009472,abdominalhernia,http://purl.obolibrary.org/obo/HP_0004299
+Nidhi Saini,Albania,"cross-sectional observational, not case-control",Human Intestinal Tract Chip,ANOSIM,blood,http://purl.obolibrary.org/obo/UBERON_0000178,abnormal glucose tolerance,http://www.ebi.ac.uk/efo/EFO_0002546
+Shaimaa Elsafoury,Algeria,time series / longitudinal observational,Illumina,ANOVA,breast,http://purl.obolibrary.org/obo/UBERON_0000310,accute-on-chronic liver failure,http://www.ebi.ac.uk/efo/EFO_0007949
+Fatima Zohra,Andorra,laboratory experiment,Ion Torrent,chi-square,bronchus,http://purl.obolibrary.org/obo/UBERON_0002185,acetaldehyde,http://purl.obolibrary.org/obo/CHEBI_15343
+Marianthi Thomatos,Angola,randomized controlled trial,Non-quantitative PCR,DESeq2,buccal mucosa,http://purl.obolibrary.org/obo/UBERON_0006956,acute lymphoblastic leukemia,http://www.ebi.ac.uk/efo/EFO_0000220
+Rimsha Azhar,Antigua and Barbuda,prospective cohort ,PacBio RS,edgeR,caecum,http://purl.obolibrary.org/obo/UBERON_0001153,acute myeloid leukemia,http://www.ebi.ac.uk/efo/EFO_0000222
+Phyu Han,Argentina,meta-analysis,PhyloChip,Fisher's Exact Test,colon,http://purl.obolibrary.org/obo/UBERON_0001155,adenoma,http://www.ebi.ac.uk/efo/EFO_0000232
+Christina Brown,Armenia,,Roche454,Kolmogorov-Smirnov test,colonic mucosa,http://purl.obolibrary.org/obo/UBERON_0000317,age,http://www.ebi.ac.uk/efo/EFO_0000246
+Yaseen Javaid,Australia,,RT-qPCR,Kruskall-Wallis,dental plaque,http://purl.obolibrary.org/obo/UBERON_0016482,AIDS,http://www.ebi.ac.uk/efo/EFO_0000765
+Lora Kasselman,Austria,,Mass spectrometry,LEfSe,dorsum,http://purl.obolibrary.org/obo/UBERON_0001137,air pollution,http://purl.obolibrary.org/obo/ENVO_02500037
+Utsav Patel,Azerbaijan,,,Linear Regression,ear,http://purl.obolibrary.org/obo/UBERON_0001690,alcohol consumption measurement,http://www.ebi.ac.uk/efo/EFO_0007878
+Valentina Pineda,Bahamas,,,Logistic Regression,elbow,http://purl.obolibrary.org/obo/UBERON_0001461,alcohol drinking,http://www.ebi.ac.uk/efo/EFO_0004329
+Lucy Mellor,Bahrain,,,Mann-Whitney (Wilcoxon),endocervix,http://purl.obolibrary.org/obo/UBERON_0000458,allergic rhinitis,http://www.ebi.ac.uk/efo/EFO_0005854
+Cynthia Anderson,Bhutan,,,Metastats,external naris,http://purl.obolibrary.org/obo/UBERON_0005928,alzheimer's disease,https://www.ebi.ac.uk/efo/EFO_0000249
+William Lam,Barbados,,,PLS-DA (Partial least square discriminant analysis) ,feces,http://purl.obolibrary.org/obo/UBERON_0001988,anorexia nervosa,http://www.ebi.ac.uk/efo/EFO_0004215
+Aboud Ezzeddine,Belarus,,,Random Forest Analysis,gingiva,http://purl.obolibrary.org/obo/UBERON_0001828,antimicrobial agent,http://purl.obolibrary.org/obo/CHEBI_33281
+Zyaijah Bailey,Belgium,,,spearman correlation,mastoid lymph node,http://purl.obolibrary.org/obo/UBERON_0016392,anxiety disorder,http://www.ebi.ac.uk/efo/EFO_0006788
+Victoria Goulbourne,Belize,,,t-test,head,http://purl.obolibrary.org/obo/UBERON_0000033,aortic valve insufficiency,http://www.ebi.ac.uk/efo/EFO_0007148
+Michael Lutete,Benin,,,Welch's t-test,hypopharynx,http://purl.obolibrary.org/obo/UBERON_0001051,arthritis,http://www.ebi.ac.uk/efo/EFO_0005856
+Jonathan Ye,Bosnia and Herzegovina,,,negative binomial regression,ileum,http://purl.obolibrary.org/obo/UBERON_0002116,ascites,http://purl.obolibrary.org/obo/HP_0001541
+Nadine Ulysse,Bolivia,,,NLMIXED,internal naris,http://purl.obolibrary.org/obo/UBERON_0010425,asthma,http://www.ebi.ac.uk/efo/EFO_0000270
+Tahiya Begum,Bangladesh,,,pearson correlation,lower part of vagina,http://purl.obolibrary.org/obo/UBERON_0015243,atopic asthma,http://www.ebi.ac.uk/efo/EFO_0010638
+Mst Afroza Parvin,Botswana,,,PERMANOVA,lung,http://purl.obolibrary.org/obo/UBERON_0002048,atopic eczema,http://www.ebi.ac.uk/efo/EFO_0000274
+Yu Wang,Brazil,,,Beta Binomial Regression,mesenteric lymph node,http://purl.obolibrary.org/obo/UBERON_0002509,attention deficit hyperactivity disorder,http://www.ebi.ac.uk/efo/EFO_0003888
+Gina Celentano,Brunei Darussalam,,,Dunn's test,meconium,http://purl.obolibrary.org/obo/UBERON_0007109,autism,http://www.ebi.ac.uk/efo/EFO_0003758
+Adiba Yeakub,Bulgaria,,,Wald test,hard palate,http://purl.obolibrary.org/obo/UBERON_0003216,behcet's syndrome,http://www.ebi.ac.uk/efo/EFO_0003780
+Ecaterina Duscova,Burkina Faso,,,cox proportional hazards regression,milk,http://purl.obolibrary.org/obo/UBERON_0001913,bipolar disorder,http://www.ebi.ac.uk/efo/EFO_0000289
+Fareeha Mannan,Burundi,,,,mouth,http://purl.obolibrary.org/obo/UBERON_0000165,bladder calculus,http://www.ebi.ac.uk/efo/EFO_1000839
+,Cabo Verde,,,,mucosa,http://purl.obolibrary.org/obo/UBERON_0000344,bladder disease,http://www.ebi.ac.uk/efo/EFO_1000018
+,Cambodia,,,,mucosa of stomach,http://purl.obolibrary.org/obo/UBERON_0001199,body mass index,http://www.ebi.ac.uk/efo/EFO_0004340
+,Cameroon,,,,nasal cavity,http://purl.obolibrary.org/obo/UBERON_0001707,body odor measurement,http://www.ebi.ac.uk/efo/EFO_0008386
+,Canada,,,,nasopharynx,http://purl.obolibrary.org/obo/UBERON_0001728,breast cancer,http://purl.obolibrary.org/obo/MONDO_0007254
+,Central African Republic,,,,neck,http://purl.obolibrary.org/obo/UBERON_0000974,breast carcinoma,http://www.ebi.ac.uk/efo/EFO_0000305
+,Chad,,,,nose,http://purl.obolibrary.org/obo/UBERON_0000004,breast milk measurement,http://www.ebi.ac.uk/efo/EFO_0009092
+,Chile,,,,oral gland,http://purl.obolibrary.org/obo/UBERON_0010047,bronchitis,http://www.ebi.ac.uk/efo/EFO_0006505
+,China,,,,pair of nares,http://purl.obolibrary.org/obo/UBERON_0002109,cannabis use,http://www.ebi.ac.uk/efo/EFO_0007585
+,Colombia,,,,palatine tonsils,http://purl.obolibrary.org/obo/UBERON_0002373,cellulitis,http://www.ebi.ac.uk/efo/EFO_0003035
+,Comoros,,,,placenta,http://purl.obolibrary.org/obo/UBERON_0001987,cervical cancer,http://purl.obolibrary.org/obo/MONDO_0002974
+,Congo,,,,posterior fornix of vagina,http://purl.obolibrary.org/obo/UBERON_0016486,cervical cerclage,http://purl.obolibrary.org/obo/NCIT_C102763
+,Cook Islands,,,,prostate gland secretion,http://purl.obolibrary.org/obo/UBERON_0004796,cervical glandular intraepithelial neoplasia,http://www.ebi.ac.uk/efo/EFO_1000165
+,Costa Rica,,,,rectal ,http://purl.obolibrary.org/obo/NCIT_C25224,cesarean section,http://www.ebi.ac.uk/efo/EFO_0009636
+,Croatia,,,,saliva,http://purl.obolibrary.org/obo/UBERON_0001836,chlamydia trachomatis infectious disease,http://www.ebi.ac.uk/efo/EFO_0007205
+,Cuba,,,,skin of body,http://purl.obolibrary.org/obo/UBERON_0002097,chronic fatigue syndrome,http://www.ebi.ac.uk/efo/EFO_0004540
+,Cyprus,,,,skin of cheek,http://purl.obolibrary.org/obo/UBERON_0008803,chronic hepatitis B virus infection,http://www.ebi.ac.uk/efo/EFO_0004239
+,Czechia,,,,skin of forearm,http://purl.obolibrary.org/obo/UBERON_0003403,chronic hepatitis C virus infection,http://www.ebi.ac.uk/efo/EFO_0004220
+,Côte d'Ivoire,,,,small intestine,http://purl.obolibrary.org/obo/UBERON_0002108,chronic kidney disease,http://www.ebi.ac.uk/efo/EFO_0003884
+,Democratic Republic of the Congo,,,,sputum,http://purl.obolibrary.org/obo/UBERON_0007311,chronic obstructive pulmonary disease,http://www.ebi.ac.uk/efo/EFO_0000341
+,Denmark,,,,stomach,http://purl.obolibrary.org/obo/UBERON_0000945,chronic pancreatitis,http://www.ebi.ac.uk/efo/EFO_0000342
+,Djibouti,,,,throat,http://purl.obolibrary.org/obo/UBERON_0000341,cirrhosis of liver,http://www.ebi.ac.uk/efo/EFO_0001422
+,Dominica,,,,tongue,http://purl.obolibrary.org/obo/UBERON_0001723,coeliac,http://www.ebi.ac.uk/efo/EFO_0001060
+,Dominican Republic,,,,urine,http://purl.obolibrary.org/obo/UBERON_0001088,colorectal cancer,http://www.ebi.ac.uk/efo/EFO_0005842
+,Ecuador,,,,uterine cervix,http://purl.obolibrary.org/obo/UBERON_0000002,cough,http://purl.obolibrary.org/obo/HP_0012735
+,Egypt,,,,uterus,http://purl.obolibrary.org/obo/UBERON_0000995,crohn disease,http://www.ebi.ac.uk/efo/EFO_0000384
+,El Salvador,,,,vagina,http://purl.obolibrary.org/obo/UBERON_0000996,cystitis,http://www.ebi.ac.uk/efo/EFO_1000025
+,Equatorial Guinea,,,,vagina orifice,http://purl.obolibrary.org/obo/UBERON_0012317,dental enamel hypoplasia,http://www.ebi.ac.uk/efo/EFO_1001304
+,Eritrea,,,,,,diet,http://www.ebi.ac.uk/efo/EFO_0002755
+,Estonia,,,,,,digestive system cancer,http://purl.obolibrary.org/obo/MONDO_0002516
+,Eswatini,,,,,,drug dependence,http://www.ebi.ac.uk/efo/EFO_0003890
+,Ethiopia,,,,,,eczema,http://purl.obolibrary.org/obo/HP_0000964
+,Faroe Islands,,,,,,end stage renal disease,http://purl.obolibrary.org/obo/DOID_783
+,Fiji,,,,,,egg allergy,http://www.ebi.ac.uk/efo/EFO_0007248
+,Finland,,,,,,encephalomyelitis,http://www.ebi.ac.uk/efo/EFO_0001423
+,France,,,,,,endometrial cancer,http://purl.obolibrary.org/obo/MONDO_0011962
+,Gabon,,,,,,equol,http://purl.obolibrary.org/obo/CHEBI_34741
+,Gambia,,,,,,esophageal cancer,http://purl.obolibrary.org/obo/MONDO_0007576
+,Georgia,,,,,,esophageal carcinoma,http://www.ebi.ac.uk/efo/EFO_0002916
+,Oman,,,,,,esophageal squamous cell carcinoma,http://www.ebi.ac.uk/efo/EFO_0005922
+,Germany,,,,,,extrahepatic cholestasis,http://www.ebi.ac.uk/efo/EFO_1000933
+,Ghana,,,,,,female reproductive organ cancer,http://purl.obolibrary.org/obo/MONDO_0001416
+,Greece,,,,,,food allergy,http://www.ebi.ac.uk/efo/EFO_1001890
+,Grenada,,,,,,gangrene,http://www.ebi.ac.uk/efo/EFO_0008574
+,Guatemala,,,,,,gastric adenocarcinoma,http://www.ebi.ac.uk/efo/EFO_0000503
+,Guinea,,,,,,gastric cancer,http://purl.obolibrary.org/obo/MONDO_0001056
+,Guinea-Bissau,,,,,,gastric carcinoma,http://www.ebi.ac.uk/efo/EFO_0000178
+,Guyana,,,,,,gestational diabetes,http://www.ebi.ac.uk/efo/EFO_0004593
+,Haiti,,,,,,gingival disease,http://www.ebi.ac.uk/efo/EFO_0009670
+,Honduras,,,,,,gingivitis,http://purl.obolibrary.org/obo/MONDO_0002508
+,Hungary,,,,,,graft versus host disease,http://purl.obolibrary.org/obo/MONDO_0013730
+,Iceland,,,,,,graves disease,http://www.ebi.ac.uk/efo/EFO_0004237
+,India,,,,,,graves ophthalmopathy,http://www.ebi.ac.uk/efo/EFO_1001466
+,Indonesia,,,,,,hashimoto's thyroiditis,http://www.ebi.ac.uk/efo/EFO_0003779
+,r,,,,,,head and neck carcinoma,http://purl.obolibrary.org/obo/MONDO_0002038
+,Iraq,,,,,,head and neck malignant neoplasia,http://www.ebi.ac.uk/efo/EFO_0006859
+,Ireland,,,,,,head and neck squamous cell carcinoma,http://www.ebi.ac.uk/efo/EFO_0000181
+,Israel,,,,,,health trait,http://www.ebi.ac.uk/efo/EFO_0007652
+,Italy,,,,,,Henoch-Schoenlein purpura,http://www.ebi.ac.uk/efo/EFO_1000965
+,Jamaica,,,,,,hepatitis,http://purl.obolibrary.org/obo/HP_0012115
+,Japan,,,,,,"hepatitis, alcoholic",http://www.ebi.ac.uk/efo/EFO_1001345
+,Jordan,,,,,,hepatocellular carcinoma,http://www.ebi.ac.uk/efo/EFO_0000182
+,Kazakhstan,,,,,,high fat diet,http://www.ebi.ac.uk/efo/EFO_0002757
+,Kenya,,,,,,HIV infection,http://www.ebi.ac.uk/efo/EFO_0000764
+,Kiribati,,,,,,human papilloma virus infection,http://www.ebi.ac.uk/efo/EFO_0001668
+,Kuwait,,,,,,hyperplastic polyp,http://www.ebi.ac.uk/efo/EFO_1000299
+,Kyrgyzstan,,,,,,hypertension,http://www.ebi.ac.uk/efo/EFO_0000537
+,Laos,,,,,,inflammatory bowel disease,http://www.ebi.ac.uk/efo/EFO_0003767
+,Latvia,,,,,,iron deficiency anemia,http://purl.obolibrary.org/obo/HP_0001891
+,Lebanon,,,,,,irritable bowel sydrome,http://www.ebi.ac.uk/efo/EFO_0000555
+,Lesotho,,,,,,kidney stone,http://www.ebi.ac.uk/efo/EFO_0003845
+,Liberia,,,,,,leukemia,http://www.ebi.ac.uk/efo/EFO_0000565
+,Libya,,,,,,lung cancer,http://purl.obolibrary.org/obo/MONDO_0008903
+,Lithuania,,,,,,lymphoma,http://www.ebi.ac.uk/efo/EFO_0000574
+,Luxembourg,,,,,,major depressive disorder,http://purl.obolibrary.org/obo/MONDO_0002009
+,Madagascar,,,,,,medroxyprogesterone acetate,http://purl.obolibrary.org/obo/NCIT_C1155
+,Malawi,,,,,,milk allergic reaction,http://www.ebi.ac.uk/efo/EFO_0007369
+,Malaysia,,,,,,multiple myeloma,http://www.ebi.ac.uk/efo/EFO_0001378
+,Maldives,,,,,,multiple organ failure,http://www.ebi.ac.uk/efo/EFO_1001373
+,Mali,,,,,,multiple sclerosis,http://www.ebi.ac.uk/efo/EFO_0003885
+,Malta,,,,,,necrotizing enterocolitis,http://www.ebi.ac.uk/efo/EFO_0003928
+,Marshall Islands,,,,,,neonatal jaundice,http://www.ebi.ac.uk/efo/EFO_1000739
+,Mauritania,,,,,,neurogenic bladder,http://purl.obolibrary.org/obo/HP_0000011
+,Mauritius,,,,,,neuromyelitis optica,http://www.ebi.ac.uk/efo/EFO_0004256
+,Mexico,,,,,,nicotine dependence,http://www.ebi.ac.uk/efo/EFO_0003768
+,Micronesia,,,,,,non-alcoholic fatty liver,http://www.ebi.ac.uk/efo/EFO_1001248
+,Monaco,,,,,,non-alcoholic fatty liver disease,http://www.ebi.ac.uk/efo/EFO_0003095
+,Mongolia,,,,,,non-hodgkins lymphoma,http://www.ebi.ac.uk/efo/EFO_0005952
+,Montenegro,,,,,,non-small cell lung carcinoma,http://www.ebi.ac.uk/efo/EFO_0003060
+,Morocco,,,,,,obesity,http://www.ebi.ac.uk/efo/EFO_0001073
+,Mozambique,,,,,,opioid dependence,http://www.ebi.ac.uk/efo/EFO_0005611
+,Myanmar,,,,,,oral halitosis,http://purl.obolibrary.org/obo/HP_0100812
+,Namibia,,,,,,oral leukoplakia,http://purl.obolibrary.org/obo/HP_0002745
+,Nauru,,,,,,oral mucositis,http://www.ebi.ac.uk/efo/EFO_1001904
+,Nepal,,,,,,oral squamous cell carcinoma ,http://www.ebi.ac.uk/efo/EFO_0000199
+,Netherlands,,,,,,osteoarthritis,http://www.ebi.ac.uk/efo/EFO_0002506
+,New Zealand,,,,,,otitis media with effusion,http://www.ebi.ac.uk/efo/EFO_0007415
+,Nicaragua,,,,,,ovarian cancer,http://purl.obolibrary.org/obo/MONDO_0008170
+,Niger,,,,,,pancreatic carcinoma,http://www.ebi.ac.uk/efo/EFO_0002618
+,Nigeria,,,,,,parkinson's disease,http://www.ebi.ac.uk/efo/EFO_0002508
+,Niue,,,,,,pemphigus vulgaris,http://www.ebi.ac.uk/efo/EFO_0004719
+,North Korea,,,,,,peptic esophagitis,http://www.ebi.ac.uk/efo/EFO_1001095
+,North Macedonia,,,,,,peri-implantitis,http://www.ebi.ac.uk/efo/EFO_1001390
+,Norway,,,,,,periodontal disease,http://purl.obolibrary.org/obo/MONDO_0002635
+,Pakistan,,,,,,periodontal pocket,http://www.ebi.ac.uk/efo/EFO_1001393
+,Palau,,,,,,periodontitis,http://www.ebi.ac.uk/efo/EFO_0000649
+,Panama,,,,,,phenylketonuria,http://www.orpha.net/ORDO/Orphanet_716
+,Papua New Guinea,,,,,,physical activity,http://www.ebi.ac.uk/efo/EFO_0003940
+,Paraguay,,,,,,pneumonia,http://www.ebi.ac.uk/efo/EFO_0003106
+,Peru,,,,,,polycystic ovary syndrome,http://www.ebi.ac.uk/efo/EFO_0000660
+,Philippines,,,,,,post-traumic stress disorder,http://www.ebi.ac.uk/efo/EFO_0001358
+,Poland,,,,,,postpartum,http://www.ebi.ac.uk/efo/EFO_0008562
+,Portugal,,,,,,premature birth,http://www.ebi.ac.uk/efo/EFO_0003917
+,Qatar,,,,,,preterm premature rupture of the membranes,http://purl.obolibrary.org/obo/MONDO_0012511
+,Republic of Moldova,,,,,,prostate cancer,http://purl.obolibrary.org/obo/MONDO_0008315
+,Romania,,,,,,psoriasis,http://www.ebi.ac.uk/efo/EFO_0000676
+,Russian Federation,,,,,,psoriatic arthritis,http://www.ebi.ac.uk/efo/EFO_0003778
+,Rwanda,,,,,,psychosis,http://www.ebi.ac.uk/efo/EFO_0005407
+,Saint Kitts and Nevis,,,,,,pulmonary tuberculosis,http://www.ebi.ac.uk/efo/EFO_1000049
+,Saint Lucia,,,,,,pyelonephritis,http://www.ebi.ac.uk/efo/EFO_1001141
+,Saint Vincent and the Grenadines,,,,,,renal cell carcinoma,http://www.ebi.ac.uk/efo/EFO_0000681
+,Samoa,,,,,,response to allogeneic hematopoietic stem cell transplant,http://www.ebi.ac.uk/efo/EFO_0007044
+,San Marino,,,,,,rheumatoid arthritis,http://www.ebi.ac.uk/efo/EFO_0000685
+,Sao Tome and Principe,,,,,,salmonella gastroenteritis,http://www.ebi.ac.uk/efo/EFO_0007475
+,Saudi Arabia,,,,,,salmonellosis,http://www.ebi.ac.uk/efo/EFO_0007475
+,Senegal,,,,,,schizophrenia,http://www.ebi.ac.uk/efo/EFO_0000692
+,Serbia,,,,,,sepsis,http://purl.obolibrary.org/obo/HP_0100806
+,Seychelles,,,,,,sessile serrated adenoma,http://www.ebi.ac.uk/efo/EFO_1000197
+,Sierra Leone,,,,,,severe aplastic anemia,http://www.ebi.ac.uk/efo/EFO_0006927
+,Singapore,,,,,,sex design,http://www.ebi.ac.uk/efo/EFO_0001752
+,Slovakia,,,,,,sjogren's syndrome,http://www.ebi.ac.uk/efo/EFO_0000699
+,Slovenia,,,,,,smoking behavior,http://www.ebi.ac.uk/efo/EFO_0004318
+,Solomon Islands,,,,,,squamous cell carcinoma,http://www.ebi.ac.uk/efo/EFO_0000707
+,Somalia,,,,,,staphylococcus skin infection,http://www.ebi.ac.uk/efo/EFO_1001849
+,South Africa,,,,,,status asthmaticus,http://www.ebi.ac.uk/efo/EFO_0008590
+,South Korea,,,,,,stimulus or stress design,http://www.ebi.ac.uk/efo/EFO_0001762
+,South Sudan,,,,,,substance related disorder,http://purl.obolibrary.org/obo/MONDO_0002494
+,Spain,,,,,,syncope,http://purl.obolibrary.org/obo/HP_0001279
+,Sri Lanka,,,,,,thyroid carcinoma,http://www.ebi.ac.uk/efo/EFO_0002892
+,Sudan,,,,,,time,http://www.ebi.ac.uk/efo/EFO_0000721
+,Suriname,,,,,,titanium dioxide nanoparticles,http://purl.obolibrary.org/obo/XCO_0000339
+,Sweden,,,,,,tongue neoplasm,http://www.ebi.ac.uk/efo/EFO_0003871
+,Switzerland,,,,,,tonsillitis,http://purl.obolibrary.org/obo/HP_0011110
+,Syrian Arab Republic,,,,,,tuberculosis,http://www.orpha.net/ORDO/Orphanet_3389
+,Tajikistan,,,,,,type I diabetes mellitus,http://www.ebi.ac.uk/efo/EFO_0001359
+,Thailand,,,,,,type II diabetes mellitus,http://www.ebi.ac.uk/efo/EFO_0001360
+,Timor-Leste,,,,,,ulcerative colitis,http://www.ebi.ac.uk/efo/EFO_0000729
+,Togo,,,,,,urinary track infection,http://www.ebi.ac.uk/efo/EFO_0003103
+,Tokelau,,,,,,unipolar depression,http://www.ebi.ac.uk/efo/EFO_0003761
+,Tonga,,,,,,vulvovaginitis,http://www.ebi.ac.uk/efo/EFO_1001240
+,Trinidad and Tobago,,,,,,wilson disease,http://www.orpha.net/ORDO/Orphanet_905
 ,Tunisia,,,,,,,
 ,Turkey,,,,,,,
 ,Turkmenistan,,,,,,,

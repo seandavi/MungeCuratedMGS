@@ -45,7 +45,6 @@ library(googlesheets)
 suppressMessages(gs_auth(token = "/tmp/googlesheets_token.rds", verbose = FALSE))
 ```
 
-
 ## Ontologies
 
 ### EFO
@@ -131,6 +130,11 @@ exp.keys <- create_keys("Experiment ", experiment[,exp.cols])
 stud.cols <- setdiff(colnames(study), freeform.cols)
 stud.keys <- create_keys("Study ", study[,stud.cols])
 
+# reset signature counter
+sig.rle <- rle(exp.keys)$lengths
+sig.rle <- lapply(sig.rle, seq_len)
+sig.keys <- paste("Signature", unlist(sig.rle))
+
 signature$Experiment <- exp.keys
 signature$Study <- stud.keys
 experiment$Study <- stud.keys
@@ -141,6 +145,11 @@ study$`Page Name`<- stud.keys
 
 experiment <- unique(experiment)
 study <- unique(study)
+
+# reset experiment counter
+exp.rle <- rle(experiment$Study)$lengths
+exp.rle <- lapply(exp.rle, seq_len)
+experiment[["Page Name"]] <- paste("Experiment", unlist(exp.rle))
 
 write.csv(study, file="studies.csv", row.names = FALSE)
 write.csv(experiment, file="experiments.csv", row.names = FALSE)
