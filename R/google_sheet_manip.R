@@ -147,6 +147,15 @@ curation_sheet = function(...)
     colnames(sheet) <- sub("case definition", "Group 1 definition", colnames(sheet), fixed = TRUE)
     colnames(sheet) <- sub("Shannon index", "Shannon", colnames(sheet), fixed = TRUE)
     colnames(sheet) <- sub("Country", "location", colnames(sheet), fixed = TRUE)
+
+    # set all NA's to blank
+    sheet[is.na(sheet)] <- ""
+
+    # host species
+    species <- c("Homo sapiens", "Mus musculus", "Rattus norvegicus")
+    names(species) <- c("human", "mouse", "rat")
+    sheet[["host species"]] <- unname(species[sheet[["host species"]]])
+
     return(sheet)
 }
 
