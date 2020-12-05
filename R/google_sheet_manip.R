@@ -51,7 +51,7 @@ curation_sheet = function(...)
 
     .transform <- function(diversity) 
     {
-        if(all(is.na(diversity))) diversity <- "unknown"
+        if(all(is.na(diversity))) diversity <- ""
         else if(any(is.na(diversity))) diversity <- paste("Invalid combination", paste(diversity, collapse = ","))
         else if(all(diversity == rep("NO", 2))) diversity <- "unchanged" 
         else if(all(diversity == c("YES", "NO"))) diversity <- "increased"
@@ -131,11 +131,12 @@ curation_sheet = function(...)
     
     ## Increased abundance in Group 1?
     sheet$`Increased abundance in Group 1` <-
-      ifelse(sheet$`UP or DOWN` == "DOWN", "NO", "YES")
+      ifelse(sheet$`UP or DOWN` == "DOWN", "No", "Yes")
     sheet <- sheet[, !colnames(sheet) %in% "UP or DOWN"]
 
-    ## upper-case MHT
-    sheet$`threshold corrected for MHT? yes/no` <- toupper(sheet$`threshold corrected for MHT? yes/no`)
+    ## MHT
+    sheet$`threshold corrected for MHT? yes/no` <- tolower(sheet$`threshold corrected for MHT? yes/no`)
+    sheet$`threshold corrected for MHT? yes/no` <- ifelse(sheet$`threshold corrected for MHT? yes/no` == "yes", "Yes", "No")
     
     ## Column renaming for consistency with Ike's example
     colnames(sheet) <- sub("source within paper", "source", colnames(sheet))

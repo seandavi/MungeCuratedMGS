@@ -27,5 +27,11 @@ create_signature_table <- function(sheet = curation_sheet()) {
     }
     sheet <- sheet[,-ind]
     sheet <- sheet[, !colnames(sheet) %in% c(studyCols(), experimentCols())]
-    return(sheet)
+   
+    # collapse signature 
+    ind <- grep("^NCBI", colnames(sheet))
+    .collapseSig <- function(x) paste(x[!is.na(x) & x != ""], collapse = ",")
+    ncbi <- apply(sheet[,ind], 1, .collapseSig)
+    sheet <- sheet[,-ind]
+    cbind(sheet, NCBI = unname(ncbi))
 }
