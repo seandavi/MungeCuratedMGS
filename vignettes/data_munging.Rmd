@@ -130,30 +130,47 @@ exp.keys <- create_keys("Experiment ", experiment[,exp.cols])
 stud.cols <- setdiff(colnames(study), freeform.cols)
 stud.keys <- create_keys("Study ", study[,stud.cols])
 
-# reset signature counter
+# reset signature counter (in signature table)
 sig.rle <- rle(exp.keys)$lengths
 sig.rle <- lapply(sig.rle, seq_len)
 sig.keys <- paste("Signature", unlist(sig.rle))
 
-signature$Experiment <- exp.keys
+# reset experiment counter (in signature table)
+exp.spl <- split(exp.keys, as.integer(sub("Study ", "", stud.keys)))
+exp.rle <- lapply(exp.spl, function(e) rle(e)$lengths)
+exp.sig.keys <- lapply(exp.rle, function(e) rep(seq_along(e), e))
+exp.sig.keys <- unlist(exp.sig.keys)
+
+signature$Experiment <- paste("Experiment", exp.sig.keys)
 signature$Study <- stud.keys
 experiment$Study <- stud.keys
 
 signature$`Page Name` <- sig.keys
-experiment$`Page Name` <- exp.keys
+experiment$`Page Name` <- signature$Experiment
 study$`Page Name`<- stud.keys 
 
-experiment <- unique(experiment)
+experiment <- experiment[!duplicated(experiment[,exp.cols]),]
 study <- unique(study)
 
-# reset experiment counter
-exp.rle <- rle(experiment$Study)$lengths
-exp.rle <- lapply(exp.rle, seq_len)
-experiment[["Page Name"]] <- paste("Experiment", unlist(exp.rle))
+# reset experiment counter (in experiment table)
+# exp.rle <- rle(experiment$Study)$lengths
+# exp.rle <- lapply(exp.rle, seq_len)
+# experiment[["Page Name"]] <- paste("Experiment", unlist(exp.rle))
 
 write.csv(study, file="studies.csv", row.names = FALSE)
 write.csv(experiment, file="experiments.csv", row.names = FALSE)
 write.csv(signature, file="signatures.csv", row.names = FALSE)
+```
+
+Double-check via joins:
+```{r}
+names(experiment)[28] <- "Experiment"
+names(study)[6] <- "Study"
+sig.exp <- plyr::join(experiment, signature, by = c("Study", "Experiment"))
+ses <- plyr::join(study,sig.exp, by = "Study")
+dupl <- study$PMID[duplicated(study$PMID)]
+dupl.studs <- study[study$PMID %in% dupl,]
+dupl.studs[order(dupl.studs$PMID),]
 ```
 
 Write the signatures file again, alternating metaphlan and NCBI columns:

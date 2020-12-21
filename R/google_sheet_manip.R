@@ -108,8 +108,8 @@ curation_sheet = function(...)
         vlist[[i]] <- vlist[[i]][c(1, length(vlist[[i]]))]
     }
     vlist <- do.call(rbind, vlist)
-    sheet$`16S variable region (lower bound)` <- vlist[, 1]
-    sheet$`16S variable region (upper bound)` <- vlist[, 2]
+    sheet$`16S variable region (lower bound)` <- as.integer(sub("V", "", vlist[, 1]))
+    sheet$`16S variable region (upper bound)` <- as.integer(sub("V", "", vlist[, 2]))
     sheet <- sheet[, !colnames(sheet) %in% "16S variable region"]
    
     ## add extra columns
@@ -131,7 +131,7 @@ curation_sheet = function(...)
     
     ## Increased abundance in Group 1?
     sheet$`Increased abundance in Group 1` <-
-      ifelse(sheet$`UP or DOWN` == "DOWN", "No", "Yes")
+      ifelse(sheet$`UP or DOWN` == "DOWN", "increased", "decreased")
     sheet <- sheet[, !colnames(sheet) %in% "UP or DOWN"]
 
     ## MHT

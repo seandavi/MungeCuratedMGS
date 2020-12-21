@@ -33,5 +33,6 @@ create_signature_table <- function(sheet = curation_sheet()) {
     .collapseSig <- function(x) paste(x[!is.na(x) & x != ""], collapse = ",")
     ncbi <- apply(sheet[,ind], 1, .collapseSig)
     sheet <- sheet[,-ind]
+    ncbi <- gsub("\\|", ";", ncbi)
     cbind(sheet, NCBI = unname(ncbi))
 }
