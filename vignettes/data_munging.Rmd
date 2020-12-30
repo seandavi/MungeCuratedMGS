@@ -216,3 +216,19 @@ colnames(study)[!colnames(study) %in% colnames(study_ike)] %>%
   grep(pattern="metaphlan|ncbi", x=., invert = TRUE, ignore.case = TRUE, value = TRUE)
 ```
 
+## Test import-export consistency
+
+Get bulk export files from bugsigdb.org: 
+
+```{r}
+sigs <- readr::read_csv("https://tinyurl.com/yakgsowm")
+exps <- readr::read_csv("https://tinyurl.com/yb2fmpa3")
+studs <- readr::read_csv("https://tinyurl.com/ycg8fs9x")
+```
+
+Check consisteny:
+
+```{r}
+testImportExport(study, experiment, signature,
+                 studs, exps, sigs)
+```
