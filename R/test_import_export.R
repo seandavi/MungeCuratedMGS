@@ -1,4 +1,4 @@
-#' unit tests for data re-import
+#' unit tests for data transfer from spreadsheet to wiki
 #'
 #' @importFrom testthat expect_equal
 #' @importFrom dplyr arrange
@@ -10,15 +10,23 @@ testImportExport <- function(import.study,
                              export.experiment,
                              export.signature)
 {
-    # check studies
+    .checkStudy(import.study, export.study)
+    .checkExperiment(import.experiment, export.experiment)
+    .checkSignature(import.signature, export.signature)
+}
+
+.checkStudy <- function(import.study, export.study)
+{ 
     import.pmids <- sort(unique(as.integer(import.study$PMID)))
     export.pmids <- sort(unique(as.integer(export.study$PMID)))
     testthat::expect_equal(length(import.pmids), length(export.pmids))
     testthat::expect_equal(import.pmids, export.pmids)
     testthat::expect_equal(import.study[["study design"]], 
                            export.study[["Study design"]])
+}
 
-    # check experiments
+.checkExperiment <- function(import.experiment, export.experiment)
+{
     testthat::expect_equal(nrow(import.experiment), nrow(export.experiment))
     export.experiment <- dplyr::arrange(export.experiment, 
                                         as.integer(sub("Study ", "", Study)),
@@ -47,8 +55,10 @@ testImportExport <- function(import.study,
                              export = export.experiment[ind, ec]))
         }  
     }
+}
 
-    # check signatures
+.checkSignature <- function(import.signature, export.signature)
+{
     testthat::expect_equal(nrow(import.signature), nrow(export.signature))
     export.signature <- dplyr::arrange(export.signature, 
                                         as.integer(sub("Study ", "", Study)),
@@ -79,6 +89,30 @@ testImportExport <- function(import.study,
                              export = export.signature[ind, ec]))
         }  
     }
+
+    # check taxa
+    import.taxa <- strsplit(import.signature[["NCBI"]], ",")
+    export.taxa <- strsplit(export.signature[["NCBI Taxonomy IDs"]], ",")    
+
+    spl <- strsplit(unlist(export.taxa), "\\|")
+    spl <- vapply(spl, function(s) s[length(s)], character(1))
+    export.taxa <- relist(spl, export.taxa)
+    export.taxa <- vapply(export.taxa, paste, character(1), collapse = ",")
+    import.taxa <- lapply(import.taxa, function(s) s[grepl("^[0-9]+$", s)])
+    import.taxa <- vapply(import.taxa, paste, character(1), collapse = ",")
+    res <- try(testthat::expect_equal(import.taxa, export.taxa),
+               silent = TRUE)
+
+    if(is(res, "try-error"))
+    {   
+        ind <- import.taxa != export.taxa
+        sig <- import.signature[ind, sig.import.cols[1:3]]
+        sig <- apply(sig, 1, paste, collapse = "/")
+        print(data.frame(signature = sig, 
+                         import = import.taxa[ind],
+                         export = export.taxa[ind]))
+    }   
+
 }
 
 exp.import.cols <- c("Study", 
