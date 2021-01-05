@@ -131,7 +131,7 @@ curation_sheet = function(...)
     
     ## Increased abundance in Group 1?
     sheet$`Increased abundance in Group 1` <-
-      ifelse(sheet$`UP or DOWN` == "DOWN", "increased", "decreased")
+      ifelse(sheet$`UP or DOWN` == "DOWN", "decreased", "increased")
     sheet <- sheet[, !colnames(sheet) %in% "UP or DOWN"]
 
     ## MHT
