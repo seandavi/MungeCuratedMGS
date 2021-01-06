@@ -139,7 +139,7 @@ sig.keys <- paste("Signature", unlist(sig.rle))
 exp.spl <- split(exp.keys, as.integer(sub("Study ", "", stud.keys)))
 exp.rle <- lapply(exp.spl, function(e) rle(e)$lengths)
 exp.sig.keys <- lapply(exp.rle, function(e) rep(seq_along(e), e))
-exp.sig.keys <- unlist(exp.sig.keys)
+exp.sig.keys <- unname(unlist(exp.sig.keys))
 
 signature$Experiment <- paste("Experiment", exp.sig.keys)
 signature$Study <- stud.keys
@@ -149,13 +149,23 @@ signature$`Page Name` <- sig.keys
 experiment$`Page Name` <- signature$Experiment
 study$`Page Name`<- stud.keys 
 
-experiment <- experiment[!duplicated(experiment[,exp.cols]),]
+stud.exp <- paste(experiment[["Study"]], experiment[["Page Name"]])
+experiment <- experiment[!duplicated(stud.exp),]
 study <- unique(study)
 
-# reset experiment counter (in experiment table)
-# exp.rle <- rle(experiment$Study)$lengths
-# exp.rle <- lapply(exp.rle, seq_len)
-# experiment[["Page Name"]] <- paste("Experiment", unlist(exp.rle))
+# check whether there are orphaned experiment or signatures 
+stopifnot(all(study[["Page Name"]] == unique(experiment[["Study"]])))
+
+# check whether there are orphaned experiment or signatures 
+stud.exp <- paste(experiment[["Study"]], experiment[["Page Name"]])
+stud.exp.sig <- paste(signature[["Study"]], signature[["Experiment"]])
+stopifnot(all(stud.exp == unique(stud.exp.sig)))
+
+# check whether there are studies that have no experiments
+stopifnot(all(study[["Page Name"]] %in% unique(experiment[["Study"]])))
+
+# check whether there are experiments that have no signatures
+stopifnot(all(stud.exp %in% unique(stud.exp.sig)))
 
 write.csv(study, file="studies.csv", row.names = FALSE)
 write.csv(experiment, file="experiments.csv", row.names = FALSE)
@@ -164,17 +174,27 @@ write.csv(signature, file="signatures.csv", row.names = FALSE)
 
 Double-check via joins:
 ```{r}
-names(experiment)[28] <- "Experiment"
-names(study)[6] <- "Study"
+ind <- colnames(experiment) == "Page Name"
+colnames(experiment)[ind] <- "Experiment"
+ind <- colnames(study) == "Page Name"
+colnames(study)[ind] <- "Study"
 sig.exp <- plyr::join(experiment, signature, by = c("Study", "Experiment"))
 ses <- plyr::join(study,sig.exp, by = "Study")
+icols <- intersect(colnames(ses), colnames(sheet))
+is.consistent <- function(n) all(ses[,n] == sheet[,n])
+cons <- vapply(icols, is.consistent, logical(1))
+cons
+stopifnot(all(cons))
+```
+
+```{r}
 dupl <- study$PMID[duplicated(study$PMID)]
 dupl.studs <- study[study$PMID %in% dupl,]
 dupl.studs[order(dupl.studs$PMID),]
 ```
 
 Write the signatures file again, alternating metaphlan and NCBI columns:
-```{r}
+```{r, eval = FALSE}
 nonsigcols <- grep("Metaphlan|NCBI|Study|Page", colnames(signature), invert=TRUE)
 sigcols <- as.integer(t(cbind(grep("Metaphlan", colnames(signature)), grep("NCBI", colnames(signature)))))
 keys <- grep("Study|Page", colnames(signature))
