@@ -108,7 +108,24 @@ testImportExport <- function(import.study,
         ind <- import.taxa != export.taxa
         sig <- import.signature[ind, sig.import.cols[1:3]]
         sig <- apply(sig, 1, paste, collapse = "/")
+
+        import.taxa.spl <- strsplit(import.taxa[ind], ",") 
+        export.taxa.spl <- strsplit(export.taxa[ind], ",")
+        sd.import <- lapply(seq_along(import.taxa.spl),
+                            function(i) setdiff(import.taxa.spl[[i]],
+                                                export.taxa.spl[[i]]))
+        sd.import <- vapply(sd.import, paste, character(1), collapse = ",")
+        sd.import[sd.import == ""] <- NA
+        
+        sd.export <- lapply(seq_along(export.taxa.spl),
+                            function(i) setdiff(export.taxa.spl[[i]],
+                                                import.taxa.spl[[i]]))
+        sd.export <- vapply(sd.export, paste, character(1), collapse = ",")
+        sd.export[sd.export == ""] <- NA
+
         print(data.frame(signature = sig, 
+                         setdiff.import = sd.import,
+                         setdiff.export = sd.export,
                          import = import.taxa[ind],
                          export = export.taxa[ind]))
     }   
