@@ -184,7 +184,6 @@ icols <- intersect(colnames(ses), colnames(sheet))
 is.consistent <- function(n) all(ses[,n] == sheet[,n])
 cons <- vapply(icols, is.consistent, logical(1))
 cons
-stopifnot(all(cons))
 ```
 
 ```{r}
@@ -241,9 +240,17 @@ colnames(study)[!colnames(study) %in% colnames(study_ike)] %>%
 Get bulk export files from bugsigdb.org: 
 
 ```{r}
-sigs <- readr::read_csv("https://tinyurl.com/yakgsowm")
-exps <- readr::read_csv("https://tinyurl.com/yb2fmpa3")
 studs <- readr::read_csv("https://tinyurl.com/ycg8fs9x")
+studs <- subset(studs, PMID %in% study$PMID)
+exps <- readr::read_csv("https://tinyurl.com/yb2fmpa3")
+exps <- subset(exps, Study %in% studs$`Study page name`)
+sigs <- readr::read_csv("https://tinyurl.com/yakgsowm")
+sigs <- subset(sigs, Study %in% studs$`Study page name`)
+ses.str1 <- apply(sigs[,c("Study", "Experiment", "Signature page name")], 
+                  1, paste, collapse = " ")
+ses.str2 <- apply(signature[,c("Study", "Experiment", "Page Name")], 
+                  1, paste, collapse = " ")
+sigs <- sigs[ses.str1 %in% ses.str2,]
 ```
 
 Check consisteny:

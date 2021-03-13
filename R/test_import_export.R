@@ -59,13 +59,13 @@ testImportExport <- function(import.study,
 
 .checkSignature <- function(import.signature, export.signature)
 {
-    testthat::expect_equal(nrow(import.signature), nrow(export.signature))
     export.signature <- dplyr::arrange(export.signature, 
                                         as.integer(sub("Study ", "", Study)),
                                         as.integer(sub("Experiment", "", 
                                                         Experiment)),
                                         as.integer(sub("Signature", "", 
                                                        `Signature page name`)))
+    testthat::expect_equal(nrow(import.signature), nrow(export.signature))
     export.signature <- as.data.frame(export.signature)  
     export.signature[is.na(export.signature)] <- ""   
 
@@ -133,7 +133,7 @@ testImportExport <- function(import.study,
 }
 
 exp.import.cols <- c("Study", 
-                     "Page Name",
+                     "Experiment",
                      "antibiotics exclusion",
                      "location",
                      "condition",
