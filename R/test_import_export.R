@@ -92,14 +92,17 @@ testImportExport <- function(import.study,
 
     # check taxa
     import.taxa <- strsplit(import.signature[["NCBI"]], ",")
+    import.taxa <- lapply(import.taxa, function(x) gsub(" ", "", x))
+    import.taxa <- lapply(import.taxa, function(s) s[grepl("^[0-9]+$", s)])
+    import.taxa <- lapply(import.taxa, sort)
+    import.taxa <- vapply(import.taxa, paste, character(1), collapse = ",")
+    
     export.taxa <- strsplit(export.signature[["NCBI Taxonomy IDs"]], ",")    
-
     spl <- strsplit(unlist(export.taxa), "\\|")
     spl <- vapply(spl, function(s) s[length(s)], character(1))
     export.taxa <- relist(spl, export.taxa)
+    export.taxa <- lapply(export.taxa, sort)
     export.taxa <- vapply(export.taxa, paste, character(1), collapse = ",")
-    import.taxa <- lapply(import.taxa, function(s) s[grepl("^[0-9]+$", s)])
-    import.taxa <- vapply(import.taxa, paste, character(1), collapse = ",")
     res <- try(testthat::expect_equal(import.taxa, export.taxa),
                silent = TRUE)
 

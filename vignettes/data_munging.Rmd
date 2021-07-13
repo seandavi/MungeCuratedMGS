@@ -246,11 +246,20 @@ exps <- readr::read_csv("https://tinyurl.com/yb2fmpa3")
 exps <- subset(exps, Study %in% studs$`Study page name`)
 sigs <- readr::read_csv("https://tinyurl.com/yakgsowm")
 sigs <- subset(sigs, Study %in% studs$`Study page name`)
+#sigs <- as.data.frame(sigs)
 ses.str1 <- apply(sigs[,c("Study", "Experiment", "Signature page name")], 
                   1, paste, collapse = " ")
+#rownames(sigs) <- ses.str1
 ses.str2 <- apply(signature[,c("Study", "Experiment", "Page Name")], 
                   1, paste, collapse = " ")
-sigs <- sigs[ses.str1 %in% ses.str2,]
+ind <- ses.str1 %in% ses.str2
+sigs <- sigs[ind,]
+ses.str1 <- ses.str1[ind]
+signature <- signature[ses.str2 %in% ses.str1,]
+#rownames(signature) <- ses.str2
+#isect <- intersect(ses.str1, ses.str2)
+#sigs <- sigs[isect,]
+#signature <- signature[isect,]
 ```
 
 Check consisteny:
